@@ -11,9 +11,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import AppBar from '@material-ui/core/AppBar';
-
+import RabbiNachman from './RabbiNachman'
 import Toolbar from '@material-ui/core/Toolbar';
-
+import PrayerHours from './PrayerHours'
 import IconButton from '@material-ui/core/IconButton';
 
 import Fab from '@material-ui/core/Fab';
@@ -30,14 +30,25 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
+  PrayerHours:{
+   margimTop:50,
+  
+
+  },
+ 
 });
 
-export default function App() {
+export default function Menu() {
   const classes = useStyles();
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+ 
   const [state, setState] = React.useState({
     right: false,
   });
-
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+    console.log(index)
+  };
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -57,18 +68,31 @@ export default function App() {
     >
       <List>
         {['בית כנסת', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem 
+          button 
+          key={text}
+          selected={selectedIndex === index}
+          onClick={(event) => handleListItemClick(event, index)}
+          >
+               <ListItemText primary={text} />
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+        
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
+        {["גבאים","זמני היום",'תיקון הכללי'].map((text, index) => (
+           <ListItem 
+           button 
+           key={text}
+           selected={selectedIndex === index}
+           onClick={(event) => handleListItemClick(event, index+5)}
+           >
+           
+             <ListItemText primary={text} />
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+           
           </ListItem>
         ))}
       </List>
@@ -80,8 +104,14 @@ export default function App() {
       
     <AppBar position="fixed" color="inherit" className={classes.appBar}>
     <Toolbar>
-      <IconButton edge="start" color="inherit" aria-label="open drawer">
-        <MenuIcon />
+       <React.Fragment key={'right'}>
+          <IconButton edge="start" color="inherit" aria-label="open drawer" onClick={toggleDrawer('right', true)}>    <MenuIcon /> </IconButton>
+          <Drawer anchor={'right'} open={state['right']} onClose={toggleDrawer('right', false)}>
+            {list('right')}
+          </Drawer>
+        </React.Fragment>
+      <IconButton >
+     
       </IconButton>
       <Fab color="secondary" aria-label="add" className={classes.fabButton}>
         <AddIcon />
@@ -95,19 +125,23 @@ export default function App() {
       </IconButton>
     </Toolbar>
   </AppBar>
-    <div>
-      
-      {['left', 'right', 'top', 'bottom'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-          <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+  <div className={classes.padding}>
+      {
+        (selectedIndex===7)? <RabbiNachman/>:<div/> 
+      }
     </div>
+
+    <div className={classes.PrayerHours}>
+      {
+        (selectedIndex===6)? <PrayerHours/>:<div/> 
+      }
+    </div>
+
+
+    
     </div>
   );
 }
+
 
 

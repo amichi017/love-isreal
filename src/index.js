@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Slideshow from './Component/Slideshow';
+import App from './App';
+import Menu from './Component/Menu';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <Slideshow />,
+  
+    <Menu/>
+   
+  
+    ,
   document.getElementById('root')
 );
 
