@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const app = express()
 const morgan=require('morgan')
 const user=require('./routes/user')
@@ -6,6 +7,15 @@ const user=require('./routes/user')
 const routesUser=require('./routes/user')
 const routesMessage=require('./routes/message')
 const routesComplaint=require('./routes/complaint')
+
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@isreal.68yhf.mongodb.net/<dbname>?retryWrites=true&w=majority`,{
+    useNewUrlParser: true,
+    useUnifiedTopology:true,
+})
+
+mongoose.connection.on('connected',()=>{
+console.log("connection")
+})
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -49,6 +59,9 @@ app.use((error,req,res,next)=>{
     })   
 })
 module.exports=app;
+
+
+
 
 
 
