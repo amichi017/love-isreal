@@ -3,26 +3,26 @@
 module.exports = {
     getAllComplaint: (req, res) => {
         res.status(200).json({
-            message: 'Get All Message'
+            message: 'Get All Complaint'
         })
     },
     createComplaint: (req, res) => {
         res.status(200).json({
-            message: 'Create a new Message'
+            message: 'Create a new Complaint'
         })
     },
     updateComplaint: (req, res) => {
         const articleId = req.params.articleId
     
         res.status(200).json({
-            message: `Update Message - ${articleId}`
+            message: `Update Complaint - ${articleId}`
         })
     },
     deleteComplaint: (req, res) => {
         const articleId = req.params.articleId
     
         res.status(200).json({
-            message: `Delete Message - ${articleId}`
+            message: `Delete Complaint - ${articleId}`
         })
     }
 }

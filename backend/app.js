@@ -4,8 +4,8 @@ const morgan=require('morgan')
 const user=require('./routes/user')
 
 const routesUser=require('./routes/user')
-const routesMessage=require('./routes/Message')
-
+const routesMessage=require('./routes/message')
+const routesComplaint=require('./routes/complaint')
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -30,12 +30,15 @@ app.use((req,res,next)=>{
 
 app.use('/user',routesUser)
 app.use('/message',routesMessage)
+app.use('/complaint',routesComplaint)
+
 
 app.use((req,res,next)=>{
     const error=new Error('Not found');
     error.status=404;
     next(error);
 })
+
 
 app.use((error,req,res,next)=>{
     res.status(error.status || 5000);
@@ -46,6 +49,11 @@ app.use((error,req,res,next)=>{
     })   
 })
 module.exports=app;
+
+
+
+
+
 
 
 // app.use((req,res,next)=>{
