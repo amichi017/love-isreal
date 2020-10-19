@@ -16,11 +16,12 @@ const Slideshow = () => {
   
   const zoomInProperties = {
     indicators: true,
-    scale: 1.4
+    scale: 1.4,
+   
   }
   return (
-    <div >
-      <Zoom {...zoomInProperties} transitionDuration={1000} style={{width: window.innerWidth*0.3}}>
+    <div style={{margimTop:50}}>
+      <Zoom {...zoomInProperties} transitionDuration={500} style={{width: window.innerWidth,height:window.innerHeight*0.75}}>
         {images.map((each, index) => 
         {console.log(each,"each");return (
           <div key={index} style={{width: '100%'}}>

@@ -3,15 +3,13 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+import {List,Divider,ListItem,ListItemIcon} from '@material-ui/core';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import AppBar from '@material-ui/core/AppBar';
 import RabbiNachman from './RabbiNachman'
+import Slideshow from './Slideshow'
 import Toolbar from '@material-ui/core/Toolbar';
 import PrayerHours from './PrayerHours'
 import IconButton from '@material-ui/core/IconButton';
@@ -35,6 +33,10 @@ const useStyles = makeStyles({
   
 
   },
+  Slideshow:{
+    margimTop:50,
+    margin:'auto'
+  }
  
 });
 
@@ -130,10 +132,16 @@ export default function Menu() {
         (selectedIndex===7)? <RabbiNachman/>:<div/> 
       }
     </div>
-
+    
     <div className={classes.PrayerHours}>
       {
         (selectedIndex===6)? <PrayerHours/>:<div/> 
+      }
+    </div>
+
+    <div className={classes.Slideshow}>
+      {
+        (selectedIndex===0)? <Slideshow/>:<div/> 
       }
     </div>
 
