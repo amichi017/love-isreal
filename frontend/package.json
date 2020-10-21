@@ -1,9 +1,8 @@
 {
-  "homepage":"https://amichi017.github.io/israel",
+  "homepage": "https://amichi017.github.io/israel",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -16,7 +15,7 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^3.4.4",
     "react-slideshow-image": "^3.3.0"
   },
   "scripts": {

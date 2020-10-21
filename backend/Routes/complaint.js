@@ -11,7 +11,7 @@ const {
 
 router.get('/', getAllComplaint);
 router.post('/', createComplaint);
-router.patch('/:userId',updateComplaint );
-router.delete('/:userId',deleteComplaint );
+router.patch('/:complaintId',updateComplaint );
+router.delete('/:complaintId',deleteComplaint );
 
 module.exports=router;

@@ -10,6 +10,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import AppBar from '@material-ui/core/AppBar';
 import RabbiNachman from './RabbiNachman'
 import Slideshow from './Slideshow'
+import Rols from './Rols'
 import Toolbar from '@material-ui/core/Toolbar';
 import PrayerHours from './PrayerHours'
 import IconButton from '@material-ui/core/IconButton';
@@ -34,8 +35,8 @@ const useStyles = makeStyles({
 
   },
   Slideshow:{
-    margimTop:50,
-    margin:'auto'
+    // margimTop:50,
+    // margin:'auto'
   }
  
 });
@@ -84,7 +85,7 @@ export default function Menu() {
       </List>
       <Divider />
       <List>
-        {["גבאים","זמני היום",'תיקון הכללי'].map((text, index) => (
+        {["תפקידים","זמני היום",'תיקון הכללי'].map((text, index) => (
            <ListItem 
            button 
            key={text}
@@ -141,7 +142,25 @@ export default function Menu() {
 
     <div className={classes.Slideshow}>
       {
-        (selectedIndex===0)? <Slideshow/>:<div/> 
+        (selectedIndex===0)? 
+        (
+
+        <Slideshow/>
+        
+        )
+        :<div/> 
+      }
+    </div>
+
+    <div >
+      {
+        (selectedIndex===5)? 
+        (
+          
+        <Rols />
+        
+        )
+        :<div/> 
       }
     </div>
 

@@ -11,7 +11,7 @@ const {
 
 router.get('/', getAllMessage);
 router.post('/', createMessage);
-router.patch('/:userId',updateMessage );
-router.delete('/:userId',deleteMessage );
+router.patch('/:messageId',updateMessage );
+router.delete('/:messageId',deleteMessage );
 
 module.exports=router;
