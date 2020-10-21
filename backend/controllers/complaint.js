@@ -35,17 +35,17 @@ module.exports = {
             })
     },
     updateComplaint: (req, res) => {
-        const complaintId = req.params.complaintId
+        // const complaintId = req.params.complaintId
        
-        Complaint.update({_id:complaintId},req.body).then(()=>{
-            res.status(200).json({
-                message: `Update Message - ${complaintId}`
-            })
-        }).catch((err)=>{
-            res.status(200).json({
-                err
-            })
-        })
+        // Complaint.update({_id:complaintId},req.body).then(()=>{
+        //     res.status(200).json({
+        //         message: `Update Message - ${complaintId}`
+        //     })
+        // }).catch((err)=>{
+        //     res.status(200).json({
+        //         err
+        //     })
+        // })
     },
     deleteComplaint: (req, res) => {
         const articleId = req.params.articleId
