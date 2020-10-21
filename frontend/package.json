@@ -18,6 +18,7 @@
     "react-scripts": "^3.4.4",
     "react-slideshow-image": "^3.3.0"
   },
+  "proxy":"http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

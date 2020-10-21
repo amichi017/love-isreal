@@ -4,13 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "heroku-postbuild": "cd frontend && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "start": "nodemon server.js"
   },
+  "proxy":"http://localhost:5000",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "helmet": "^4.1.1",
     "mongoose": "^5.10.9",
     "morgan": "^1.10.0"
   }
