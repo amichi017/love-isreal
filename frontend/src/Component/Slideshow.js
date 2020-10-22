@@ -4,7 +4,7 @@ import 'react-slideshow-image/dist/styles.css'
 import slide_2 from './images/slide_2.jpg';
 import slide_3 from './images/slide_3.jpg';
 import slide_4 from './images/slide_4.jpg';
-import Rabbi from './images/rabbi.jpg';
+import stars from './images/stars.jpg';
 import { withStyles,Card,Typography,Accordion,
   AccordionSummary ,AccordionDetails,Paper  } from '@material-ui/core';
   import Divider from '@material-ui/core/Divider';
@@ -35,8 +35,14 @@ const Slideshow = () => {
       width:'auto',
       zIndex:-1,
       //height:window.innerhight,
-     
-      background: `linear-gradient(#0f0c29, #24243e)`
+      // zIndex:-1,
+      // backgroundImage: `url(${stars})`,
+      // backgroundPosition: 'center',
+      // backgroundSize: 'cover',
+      // backgroundRepeat: 'no-repeat',
+      // minHeight: window.innerHeight,
+     background: `linear-gradient(#0f0c29, #24243e)`
+
       //   //backgroundPosition: 'center',
       //    backgroundSize:"100% 95%",
       //   backgroundRepeat: 'no-repeat',
@@ -46,13 +52,13 @@ const Slideshow = () => {
 
 
 
-      <div style={{paddingTop:50,display:"flex", justifyContent: 'flex-end',flexDirection:(window.innerWidth>1000)?"row":"column-reverse"}}>
+      <div style={{paddingTop:50,display:"flex", justifyContent: 'flex-end',flexDirection:(window.innerWidth>1000)?"row":"column"}}>
         
-      <Zoom {...zoomInProperties} transitionDuration={500} style={{width: window.innerWidth,maxWidth:1000,paddingRight:(window.innerHeight>900)?window.innerWidth*0.06:0}}>
+      <Zoom {...zoomInProperties} transitionDuration={500} style={{width: window.innerWidth*0.65,maxWidth:1000,paddingRight:(window.innerHeight>900)?window.innerWidth*0.06:0,marginLeft:(window.innerWidth>900)?window.innerWidth*0.005:0}}>
           {images.map((each, index) => 
           {return (
             <div key={index} style={{width: '100%'}}>
-              <img style={{ objectFit: "cover", width: '100%',height:(window.innerWidth>1000)?window.innerHeight*0.9:window.innerHeight*0.55 }} src={each}/>
+              <img style={{ objectFit: "cover", width: '100%',height:(window.innerWidth>1000)?window.innerHeight*0.816:window.innerHeight*0.55 }} src={each}/>
             </div>
           )})}
         </Zoom>
@@ -61,11 +67,11 @@ const Slideshow = () => {
             רקע כללי
           </Typography>
     
-          <Typography style={{direction:"rtl",paddingBottom:30,paddingRight:window.innerWidth*0.02,paddingLeft:window.innerWidth*0.06,paddingTop:10,color:"#fff"}}  variant="h5">
+          <Typography style={{direction:"rtl",paddingBottom:2,paddingRight:window.innerWidth*0.02,paddingLeft:window.innerWidth*0.06,paddingTop:10,color:"#fff"}}  variant="h5">
             בית הכנסת "אהבת ישראל"
           </Typography>
           <div style={{display:"flex", justifyContent: 'flex-end'}}>
-            <Typography style={{ paddingLeft:window.innerWidth*0.06,paddingRight:window.innerWidth*0.02,paddingTop:10 ,paddingBottom:30,color:"#fff", direction:"rtl",maxWidth:1000}}  variant="h5">
+            <Typography style={{ paddingLeft:window.innerWidth*0.06,paddingRight:window.innerWidth*0.02,paddingTop:10 ,paddingBottom:2,color:"#fff", direction:"rtl",maxWidth:1000}}  variant="h5">
             במזרח גוש עציון למרגלות ההרדיון, על ספר מדבר יהודה, נמצא הישוב הפסטורלי נוקדים ובו בית הכנסת אהבת ישראל. 
             הישוב הוקם בשנת 1982 ומונה כיום כ-300 משפחות המנהלות אורח חיים קהילתי מגוון 
             המעניק תחושת אחדות הבנה וכבוד הדדי בין אופיין הייחודי של המשפחות.
