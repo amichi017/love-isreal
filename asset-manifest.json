@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/love-isreal/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/love-isreal/static/js/main.90664a30.chunk.js",
-    "main.js.map": "/love-isreal/static/js/main.90664a30.chunk.js.map",
+    "main.js": "/love-isreal/static/js/main.07ed93f9.chunk.js",
+    "main.js.map": "/love-isreal/static/js/main.07ed93f9.chunk.js.map",
     "runtime-main.js": "/love-isreal/static/js/runtime-main.7eea5dae.js",
     "runtime-main.js.map": "/love-isreal/static/js/runtime-main.7eea5dae.js.map",
     "static/css/2.69507427.chunk.css": "/love-isreal/static/css/2.69507427.chunk.css",
@@ -15,7 +15,7 @@
     "static/js/5.038fe1e6.chunk.js": "/love-isreal/static/js/5.038fe1e6.chunk.js",
     "static/js/5.038fe1e6.chunk.js.map": "/love-isreal/static/js/5.038fe1e6.chunk.js.map",
     "index.html": "/love-isreal/index.html",
-    "precache-manifest.46c554d329c4554f826ca94a4025389b.js": "/love-isreal/precache-manifest.46c554d329c4554f826ca94a4025389b.js",
+    "precache-manifest.4eda67c9415c4c0ab676b31c0ad88784.js": "/love-isreal/precache-manifest.4eda67c9415c4c0ab676b31c0ad88784.js",
     "service-worker.js": "/love-isreal/service-worker.js",
     "static/css/2.69507427.chunk.css.map": "/love-isreal/static/css/2.69507427.chunk.css.map",
     "static/css/main.5ecd60fb.chunk.css.map": "/love-isreal/static/css/main.5ecd60fb.chunk.css.map",
@@ -27,6 +27,7 @@
     "static/media/slide_2.jpg": "/love-isreal/static/media/slide_2.225b4ae9.jpg",
     "static/media/slide_3.jpg": "/love-isreal/static/media/slide_3.039f54b7.jpg",
     "static/media/slide_4.jpg": "/love-isreal/static/media/slide_4.41436d05.jpg",
+    "static/media/stars.jpg": "/love-isreal/static/media/stars.17092f22.jpg",
     "static/media/torah.c530fe59.svg": "/love-isreal/static/media/torah.c530fe59.svg"
   },
   "entrypoints": [
@@ -34,6 +35,6 @@
     "static/css/2.69507427.chunk.css",
     "static/js/2.7ef66c3e.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.90664a30.chunk.js"
+    "static/js/main.07ed93f9.chunk.js"
   ]
 }

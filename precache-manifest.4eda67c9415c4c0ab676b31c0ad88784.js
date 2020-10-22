@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "70ea37dfe65a9e9ed03f9d46351c708e",
+    "revision": "803e6ea62b04a0aa990c545997a5b055",
     "url": "/love-isreal/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/love-isreal/static/css/2.69507427.chunk.css"
   },
   {
-    "revision": "9eca9eec6af30f500d41",
+    "revision": "0200ea43398084e65a22",
     "url": "/love-isreal/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -44,8 +44,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/love-isreal/static/js/5.038fe1e6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9eca9eec6af30f500d41",
-    "url": "/love-isreal/static/js/main.90664a30.chunk.js"
+    "revision": "0200ea43398084e65a22",
+    "url": "/love-isreal/static/js/main.07ed93f9.chunk.js"
   },
   {
     "revision": "3a86b3573cb7fb8e7e65",
@@ -66,6 +66,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "41436d0552fdf8498ac4e434e27365f0",
     "url": "/love-isreal/static/media/slide_4.41436d05.jpg"
+  },
+  {
+    "revision": "17092f22481c0ba761d981f907e316c6",
+    "url": "/love-isreal/static/media/stars.17092f22.jpg"
   },
   {
     "revision": "c530fe596fce51d40c7bb1f576f30977",
