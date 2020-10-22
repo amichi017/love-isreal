@@ -4,31 +4,48 @@ const app = express()
 const morgan=require('morgan')
 const user=require('./routes/user')
 const helmet = require('helmet') // creates headers that protect from attacks (security)
-const cors = require('cors')  // allows/disallows cross-site communication
+//const cors = require('cors')  // allows/disallows cross-site communication
 const routesUser=require('./routes/user')
 const routesMessage=require('./routes/message')
 const routesComplaint=require('./routes/complaint')
+const path = require('path');
 
+// if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
 
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  // Handle React routing, return all requests to React app
+ 
+  app.get('./', function(req, res) {
+    console.log("ggggg")
+    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+    
+  });
+// }
 
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + '../frontend/build/index.html');
+//   res.status(200).json({});
+//   // app.use('../frontend/build/index.html', express.static(__dirname + '../frontend/build/index.html'));
+// });
 // --> Add this
 // ** MIDDLEWARE ** //
-const whitelist = ['http://localhost:3000', 'http://localhost:8080', 'https://shrouded-journey-38552.herokuapp.com']
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("** Origin of request " + origin)
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable")
-      callback(null, true)
-    } else {
-      console.log("Origin rejected")
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(helmet())
+// const whitelist = ['http://localhost:5000', 'http://localhost:8080', 'https://shrouded-journey-38552.herokuapp.com']
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     console.log("** Origin of request " + origin)
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       console.log("Origin acceptable")
+//       callback(null, true)
+//     } else {
+//       console.log("Origin rejected")
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
+// app.use(helmet())
 // --> Add this
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 
 
 
@@ -93,14 +110,14 @@ app.use((error,req,res,next)=>{
 })
 
 // --> Add this
-if (process.env.NODE_ENV === 'production') {
+//app.use('../frontend/build/index.html', express.static(__dirname + '../frontend/build/index.html'));
     // Serve any static files
-    app.use(express.static(path.join(__dirname, 'frontend/build')));
+    //app.use(express.static(path.join(__dirname, '../frontend/build')));
   // Handle React routing, return all requests to React app
-    app.get('*', function(req, res) {
-      res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
-    });
-  }
+    // app.get('*', function(req, res) {
+    //   res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
+    // });
+  
 
 
 
