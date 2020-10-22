@@ -54,7 +54,7 @@ const Slideshow = () => {
 
       <div style={{paddingTop:50,display:"flex", justifyContent: 'flex-end',flexDirection:(window.innerWidth>1000)?"row":"column"}}>
         
-      <Zoom {...zoomInProperties} transitionDuration={500} style={{width: window.innerWidth*0.65,maxWidth:1000,paddingRight:(window.innerHeight>900)?window.innerWidth*0.06:0,marginLeft:(window.innerWidth>900)?window.innerWidth*0.005:0}}>
+      <Zoom {...zoomInProperties} transitionDuration={500} style={{width: (window.innerHeight>900)?window.innerWidth*0.65:window.innerWidth,maxWidth:1000,paddingRight:(window.innerHeight>900)?window.innerWidth*0.06:0,marginLeft:(window.innerWidth>900)?window.innerWidth*0.005:0}}>
           {images.map((each, index) => 
           {return (
             <div key={index} style={{width: '100%'}}>
@@ -73,7 +73,7 @@ const Slideshow = () => {
           <div style={{display:"flex", justifyContent: 'flex-end'}}>
             <Typography style={{ paddingLeft:window.innerWidth*0.06,paddingRight:window.innerWidth*0.02,paddingTop:10 ,paddingBottom:2,color:"#fff", direction:"rtl",maxWidth:1000}}  variant="h5">
             במזרח גוש עציון למרגלות ההרדיון, על ספר מדבר יהודה, נמצא הישוב הפסטורלי נוקדים ובו בית הכנסת אהבת ישראל. 
-            הישוב הוקם בשנת 1982 ומונה כיום כ-300 משפחות המנהלות אורח חיים קהילתי מגוון 
+            הישוב מונה כיום כ-300 משפחות המנהלות אורח חיים קהילתי מגוון 
             המעניק תחושת אחדות הבנה וכבוד הדדי בין אופיין הייחודי של המשפחות.
             </Typography>
           </div>
@@ -108,9 +108,9 @@ const Slideshow = () => {
       
 
 
-        <div style={{display:"flex",flexDirection:"column",paddingTop:50}}>
+        <div style={{display:"flex",flexDirection:"column",paddingTop:window.innerHeight*0.06}}>
 
-            <Typography style={{ paddingRight:window.innerWidth*0.02,paddingTop:10 ,direction:"rtl",maxWidth:1000}}  variant="h5">
+            <Typography style={{ paddingRight:window.innerWidth*0.02,paddingTop:window.innerHeight*0.01 ,direction:"rtl",maxWidth:1000}}  variant="h5">
             צריך להראות את הדרך איך נכנסים אל הטרקלין - דרך השער. השער הוא האלהות המתגלה בעולם, בעולם בכל יפיו והדרו, בכל רוח ונשמה, בכל חי ורמש, בכל צמח ופרח, בכל גוי וממלכה, בים וגליו, בשפרירי שחק ובהדרת המאורות, בכשרונות כל שיח, ברעיונות כל סופר, בדמיונות כל משורר ובהגיונות כל חושב, בהרגשת כל מרגיש ובסערת גבורה של כל גבור.
             </Typography>
             <Typography style={{ paddingRight:window.innerWidth*0.02,paddingTop:10 , direction:"rtl",maxWidth:1000}}  variant="h5">
@@ -118,7 +118,7 @@ const Slideshow = () => {
 
               אבל אנו יודעים שזהו מצב ארעי לנו, הברק יחלף והננו יורדים לשבת עוד לא בפנים ההיכל כי אם בחצרות ד'
             </Typography>
-            <Typography style={{direction:"rtl",paddingRight:window.innerWidth*0.02,paddingTop:10,color:"#ff9933",}}  variant="h5">
+            <Typography style={{direction:"rtl",paddingBottom:window.innerHeight*0.06,paddingRight:window.innerWidth*0.02,paddingTop:10,color:"#ff9933",}}  variant="h5">
                 (מתוך מאמר צמאון לקל חי -הרב קוק)
               </Typography>
 
