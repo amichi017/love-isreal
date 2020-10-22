@@ -52,13 +52,12 @@ const tableIcons = {
 
     const styles = theme => ({
         paper: {
-           // direction: 'rtl',
-           autoFocus:true,
-           hight:window.innerhight,
+            autoFocus:true,
+            hight:window.innerhight,
             paddingTop:theme.spacing(15),
             marginLeft:(window.innerWidth<600)?window.innerWidth*0.02:window.innerWidth*0.35,
-             marginRight:(window.innerWidth<600)?window.innerWidth*0.02:window.innerWidth*0.1,
-             Width:(window.innerWidth<600)?window.innerWidth*0.9:450,
+            marginRight:(window.innerWidth<600)?window.innerWidth*0.02:window.innerWidth*0.1,
+            Width:(window.innerWidth<600)?window.innerWidth*0.9:450,
             align:"right",
             margin:'auto',
             display:'flex',
@@ -66,24 +65,20 @@ const tableIcons = {
             flexWrap:"wrap",
             paddingBottom:400,
             maxWidth:(window.innerWidth<600)?window.innerWidth:450,
-         
-          //   '& > * + *': {
-          //     marginLeft: theme.spacing(2),
-          //   },
           },
           div:{
              
             Width:window.innerWidth,
             //hight:window.innerhight,
-        //     backgroundImage: `url(  ${ images[0] }  )` ,
+            // backgroundImage: `url(  ${ images[0] }  )` ,
             marginTop:theme.spacing(),
-           width:'auto',
-          zIndex:-1,
-        //   //backgroundPosition: 'center',
-        //    backgroundSize:"100% 95%",
-        //   backgroundRepeat: 'no-repeat',
-        maxHight:window.innerhight,
-        background: `linear-gradient(#0f0c29, #24243e)`
+            width:'auto',
+            zIndex:-1,
+            maxHight:window.innerhight,
+            background: `linear-gradient(#0f0c29, #24243e)`
+            //   //backgroundPosition: 'center',
+            //    backgroundSize:"100% 95%",
+            //   backgroundRepeat: 'no-repeat',
             
           }
     })

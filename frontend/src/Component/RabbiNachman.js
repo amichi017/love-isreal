@@ -32,7 +32,7 @@ const styles = theme => ({
      display:'flex',
      flexDirection:'column',
      flexWrap:"wrap",
-     marginBottom:30,
+     marginBottom:40,
     },
     heading: {
         fontSize: theme.typography.pxToRem(15),
@@ -340,7 +340,6 @@ class RabbiNachman extends Component {
           aria-controls="panel1a-content"
           id="panel1a-header"
           dir="rtl"
-          
         >
            <Typography variant="h2" style={{paddingTop:'auto',color:'#ff9900',fontSize:23}} gutterBottom align='center'  dir="rtl" className={this.props.classes.heading}> לקריאת התפילה לאחר התיקון הכללי לחץ כאן </Typography>
         </AccordionSummary>

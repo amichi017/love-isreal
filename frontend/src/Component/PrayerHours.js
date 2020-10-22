@@ -155,15 +155,42 @@ let dateOfShbat ="";
 fetch("https://www.hebcal.com/shabbat?cfg=json&m=50&latitude=31.6333308&longitude=35.2166658&tzid=Etc/GMT"+str)
   .then(response => response.json())
   .then((res )=> {
+
+    res.items.map((item,index)=>{
+      let date=new Date(item.date);
+      let timeBeforSub =new Date(item.date)
+      let subForMinusDay=(timeBeforSub.getTime()-(60*60*1000*24));
+      let timeAfterMinusDay=new Date(subForMinusDay);
+      if(item.hebrew.slice(0,4) === 'פרשת'){
+        dateOfShbat = timeAfterMinusDay.getDate()+"/"+(timeAfterMinusDay.getMonth()+1)+"/"+timeAfterMinusDay.getFullYear();
+        rowsShbat.push( createData( String(item.hebrew)  ,"פרשת השבוע") )
+
+    }
+      if(item.hebrew === 'הדלקת נרות'){
+         let timeBeforSub =new Date(item.date)
+         let sub=(timeBeforSub.getTime()-(5*60*1000));
+         let timeAfterSub=new Date(sub);
+        rowsShbat.push( createData( trnsfrom ( timeAfterSub.getHours(),timeAfterSub.getMinutes(),timeAfterSub.getSeconds() ) ,"הדלקת נרות") )
+      }
+      if(item.hebrew === 'הבדלה'){
+        console.log(item.date,"item.date")
+       rowsShbat.push( createData( trnsfrom ( date.getHours(),date.getMinutes(),date.getSeconds() ) ,"הבדלה") )
+     }
+   
+        
+        // rowsShbat.push( createData( trnsfrom ( date.getHours(),date.getMinutes(),date.getSeconds() ) , String(item.hebrew) ))
+    })
+    
+    rowsShbat.push(createData(trnsfrom(new Date(zmanim.BasicZmanim.Tzais72).getHours(),new Date(zmanim.BasicZmanim.Tzais72).getMinutes(),new Date(zmanim.BasicZmanim.Tzais72).getSeconds()), 'צאת השבת לרבנו תם	', ))
      console.log(res,"data");
- let timeBeforSub =new Date(res.items[2].date)
- let sub=(timeBeforSub.getTime()-(5*60*1000));
- let timeAfterSub=new Date(sub);
- dateOfShbat = timeBeforSub.getDate()+"/"+(timeBeforSub.getMonth()+1)+"/"+timeBeforSub.getFullYear();
- rowsShbat.push( createData( String(res.items[3].hebrew) , 'פרשת השבוע') )
- rowsShbat.push( createData( trnsfrom ( timeAfterSub.getHours(),timeAfterSub.getMinutes(),timeAfterSub.getSeconds() ) ,"הדלקת נרות") )
-let y = new Date(res.items[2].date)
-rowsShbat.push( createData( trnsfrom ( y.getHours(),y.getMinutes(),y.getSeconds() ) ,"צאת השבת (50 דקות אחרי השקיעה) ") )
+//  let timeBeforSub =new Date(res.items[2].date)
+//  let sub=(timeBeforSub.getTime()-(5*60*1000));
+//  let timeAfterSub=new Date(sub);
+//  dateOfShbat = timeBeforSub.getDate()+"/"+(timeBeforSub.getMonth()+1)+"/"+timeBeforSub.getFullYear();
+//  rowsShbat.push( createData( String(res.items[3].hebrew) , 'פרשת השבוע') )
+//  rowsShbat.push( createData( trnsfrom ( timeAfterSub.getHours(),timeAfterSub.getMinutes(),timeAfterSub.getSeconds() ) ,"הדלקת נרות") )
+// let y = new Date(res.items[2].date)
+// rowsShbat.push( createData( trnsfrom ( y.getHours(),y.getMinutes(),y.getSeconds() ) ,"צאת השבת (50 דקות אחרי השקיעה) ") )
    
 
   

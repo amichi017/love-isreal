@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 import {List,Divider,ListItem,ListItemIcon} from '@material-ui/core';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
@@ -10,6 +10,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import AppBar from '@material-ui/core/AppBar';
 import RabbiNachman from './RabbiNachman'
 import Slideshow from './Slideshow'
+import PrayerLoveIsreal from './PrayerLoveIsreal' 
 import Rols from './Rols'
 import Toolbar from '@material-ui/core/Toolbar';
 import PrayerHours from './PrayerHours'
@@ -31,8 +32,6 @@ const useStyles = makeStyles({
   },
   PrayerHours:{
    margimTop:50,
-  
-
   },
   Slideshow:{
     // margimTop:50,
@@ -70,7 +69,7 @@ export default function Menu() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['בית כנסת', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['בית כנסת', 'זמני התפילות', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem 
           button 
           key={text}
@@ -164,7 +163,19 @@ export default function Menu() {
       }
     </div>
 
+    <div >
+      {
+        (selectedIndex===1)? 
+        (
+          
+        <PrayerLoveIsreal />
+        
+        )
+        :<div/> 
+      }
+    </div>
 
+    
     
     </div>
   );
