@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/love-isreal/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/love-isreal/static/js/main.07ed93f9.chunk.js",
-    "main.js.map": "/love-isreal/static/js/main.07ed93f9.chunk.js.map",
+    "main.js": "/love-isreal/static/js/main.08ded211.chunk.js",
+    "main.js.map": "/love-isreal/static/js/main.08ded211.chunk.js.map",
     "runtime-main.js": "/love-isreal/static/js/runtime-main.7eea5dae.js",
     "runtime-main.js.map": "/love-isreal/static/js/runtime-main.7eea5dae.js.map",
     "static/css/2.69507427.chunk.css": "/love-isreal/static/css/2.69507427.chunk.css",
@@ -15,7 +15,7 @@
     "static/js/5.038fe1e6.chunk.js": "/love-isreal/static/js/5.038fe1e6.chunk.js",
     "static/js/5.038fe1e6.chunk.js.map": "/love-isreal/static/js/5.038fe1e6.chunk.js.map",
     "index.html": "/love-isreal/index.html",
-    "precache-manifest.4eda67c9415c4c0ab676b31c0ad88784.js": "/love-isreal/precache-manifest.4eda67c9415c4c0ab676b31c0ad88784.js",
+    "precache-manifest.5891a4bc0abd20a77550c6f7f47ea5c1.js": "/love-isreal/precache-manifest.5891a4bc0abd20a77550c6f7f47ea5c1.js",
     "service-worker.js": "/love-isreal/service-worker.js",
     "static/css/2.69507427.chunk.css.map": "/love-isreal/static/css/2.69507427.chunk.css.map",
     "static/css/main.5ecd60fb.chunk.css.map": "/love-isreal/static/css/main.5ecd60fb.chunk.css.map",
@@ -35,6 +35,6 @@
     "static/css/2.69507427.chunk.css",
     "static/js/2.7ef66c3e.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.07ed93f9.chunk.js"
+    "static/js/main.08ded211.chunk.js"
   ]
 }
