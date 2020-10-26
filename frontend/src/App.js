@@ -1,17 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Menu from './Component/Menu';
-import Slideshow from './Component/Slideshow';
-import * as serviceWorker from './serviceWorker';
-
-export default function App() {
-    return (
-        <div>
-             <Menu/>
-            <Slideshow />
-        </div>
-);
-
+import React, { Component } from 'react'
+import Menu from './Screen/Menu'
+export default class App extends Component {
+    render() {
+        return (
+            <div>
+                <Menu/>
+            </div>
+        )
+    }
 }
-
