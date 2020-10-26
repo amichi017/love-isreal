@@ -14,9 +14,9 @@ import { ComplexZmanimCalendar, getZmanimJson } from "kosher-zmanim";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import { FullscreenExit } from '@material-ui/icons';
 const KosherZmanim = require("kosher-zmanim");
-let date=new Date(2020,9,16)
+let date=new Date();
 let str='';
-if(date.toString().includes('(שעון ישראל (חורף))')){
+if(date.toString().includes('חורף')){
 str+='-2'
 }
 else{
