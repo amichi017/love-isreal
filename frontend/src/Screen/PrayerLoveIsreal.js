@@ -118,13 +118,18 @@ const trnsfrom=(hours,minutes,seconds)=>{
 
 }
 let dateBeforSub=new Date(zmanim.BasicZmanim.SeaLevelSunset);
-let sub=(dateBeforSub.getTime()-(15*60*1000));
+let sub=(dateBeforSub.getTime()-(10*60*1000));
 let timeAfterMinusDay=new Date(sub);
+let str1=String("לאחר תפילת מנחה");
+let str2=String("(קיץ) תפילת ערבית ");
+let str3=String("20:00:00");
+let str4=String("(חורף) תפילת ערבית ");
 const rows = [
 
     createData("06:45:00", 'תפילת שחרית' ),
     createData(trnsfrom(timeAfterMinusDay.getHours(),timeAfterMinusDay.getMinutes(),0), 'תפילת מנחה', ),
-    createData("  לאחר תפילת מנחה", " תפילת ערבית " ),
+    createData(str1, str2),
+    createData(str3,str4),
 
 ];
 
