@@ -4,7 +4,7 @@ import { withStyles,Card,Typography,Accordion,
     import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
     import bg from '../images/bg.jpg';
    
-    console.log(window.innerWidth,"window.innerWidth")
+    //console.log(window.innerWidth,"window.innerWidth")
 const styles = theme => ({
     paper: {
         

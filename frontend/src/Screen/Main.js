@@ -2,6 +2,11 @@ import React,{Component}from 'react';
 import { Zoom } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import video_1 from '../video/video_1.mp4';
+import video_2 from '../video/video_2.mp4';
+import video_3 from '../video/video_3.mp4';
+import video_4 from '../video/video_4.mp4';
+import video_5 from '../video/video_5.mp4';
+import video_6 from '../video/video_6.mp4';
 import slide_2 from '../images/slide_2.jpg';
 import slide_3 from '../images/slide_3.jpg';
 import slide_4 from '../images/slide_4.jpg';
@@ -33,6 +38,8 @@ import { withStyles,Typography,CardContent,
   import { ReactComponent as YourSvg } from '../svg/torah.svg';
   import { ReactComponent as Sedor } from '../svg/sedor.svg';
   import styled, { keyframes } from 'styled-components'
+  import ReactDOM from "react-dom";
+ 
 
   const rotate = keyframes`
   from {
@@ -123,7 +130,61 @@ const StyledInnerCircle = styled.circle`
 
 
 export default class main extends Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+    this.state={
+      index: 0,
+      width:window.innerWidth,
+      height:window.innerHeight,
+      srcNow:video_1,
+      src: [
+        video_1,
+        video_2,
+        video_3,
+        video_4,
+        video_5,
+        video_6,
+       
+      ]
+    }
+  }
+
+  componentDidMount() {
+    let video = this.myRef.current;
+  
+    video.addEventListener("ended", e => {
+      ///e.preventDefault();
+      if (this.state.index === this.state.src.length-1) {
+        this.setState({
+          index:(Math.floor(Math.random() * (this.state.src.length-1)))-1,
+         
+        });
+      }
+      if (this.state.index < this.state.src.length) {
+        let nextIndex = this.state.index + 1;
+        video.src=this.state.src[nextIndex];
+        this.setState({
+          index: nextIndex,
+          srcNow: this.state.src[nextIndex]
+        });
+
+      }
+     
+    });
+    this.forceUpdate()
+    video.play();
+    
+  }
+  componentDidUpdate(prevProps, prevState) {
+    let video = this.myRef.current;
+    video.play();
+    
+  }
+  
+ 
   render() {
+   
     const images = [
       slide_23,
       slide_22,
@@ -163,17 +224,14 @@ export default class main extends Component {
 
 return (
 <div>
-
-    
-     
-  
-  <video
-  autoPlay
-  loop
+{console.log(this.state.srcNow,"this.state.srcNow")}
+<video
+  ref={this.myRef}
+ 
   muted
-  style={{position:"absolute",height:window.innerHeight,width:window.innerWidth, zIndex:-1,objectFit:"cover",transform:"translate:(-50%,-50%)"}}
+  style={{position:"absolute",height:window.innerHeight,width:window.innerWidth, zIndex:-30,objectFit:"cover"}}
   >
-    <source src={video_1} type="video/mp4"></source>
+    <source src={this.state.srcNow} type="video/mp4"></source>
   </video>
 
 
@@ -185,6 +243,7 @@ return (
     minHeight:window.innerHeight*0.8,
     maxHeight:window.innerHeight*0.9,
     width:'auto',
+    backgroundColor: 'rgba(0,0,0,0.5)',
     }}>
 
   

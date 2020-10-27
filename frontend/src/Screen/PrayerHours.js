@@ -24,7 +24,7 @@ else{
 }
 
 
-console.log(str,'str');
+
 const options ={
     date: date,
     //timeZoneId: 'Asia/Jerusalem',
@@ -174,7 +174,7 @@ fetch("https://www.hebcal.com/shabbat?cfg=json&m=50&latitude=31.6333308&longitud
         rowsShbat.push( createData( trnsfrom ( timeAfterSub.getHours(),timeAfterSub.getMinutes(),timeAfterSub.getSeconds() ) ,"הדלקת נרות") )
       }
       if(item.hebrew === 'הבדלה'){
-        console.log(item.date,"item.date")
+       
        rowsShbat.push( createData( trnsfrom ( date.getHours(),date.getMinutes(),date.getSeconds() ) ,"צאת שבת") )
      }
    
@@ -183,7 +183,7 @@ fetch("https://www.hebcal.com/shabbat?cfg=json&m=50&latitude=31.6333308&longitud
     })
     
     rowsShbat.push(createData(trnsfrom(new Date(zmanim.BasicZmanim.Tzais72).getHours(),new Date(zmanim.BasicZmanim.Tzais72).getMinutes(),new Date(zmanim.BasicZmanim.Tzais72).getSeconds()), 'צאת השבת לרבנו תם	', ))
-     console.log(res,"data");
+   
 //  let timeBeforSub =new Date(res.items[2].date)
 //  let sub=(timeBeforSub.getTime()-(5*60*1000));
 //  let timeAfterSub=new Date(sub);

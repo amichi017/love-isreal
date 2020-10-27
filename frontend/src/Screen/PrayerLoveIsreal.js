@@ -24,7 +24,6 @@ else{
 }
 
 
-console.log(str,'str');
 const options ={
     date: date,
     timeZoneId: 'Etc/GMT'+str,
@@ -157,7 +156,7 @@ fetch("https://www.hebcal.com/shabbat?cfg=json&m=44&latitude=31.6333308&longitud
      
       }
       if(item.hebrew === 'הבדלה'){
-        console.log(item.date,"item.date")
+       
         let timeBeforSub =new Date(item.date)
         let subForMinusDay=(timeBeforSub.getTime()-(10*60*1000));
         let timeAfterMinusDay=new Date(subForMinusDay);
