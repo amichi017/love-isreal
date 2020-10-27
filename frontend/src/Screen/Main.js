@@ -49,7 +49,6 @@ import { withStyles,Typography,CardContent,
    
     
   }
-
   to {
     transform: rotate(180deg);
     z-index:50;
@@ -222,12 +221,19 @@ export default class main extends Component {
 
 return (
 <div>
-{console.log(this.state.srcNow,"this.state.srcNow")}
+
 <video
   ref={this.myRef}
  
   muted
-  style={{position:"absolute",height:window.innerHeight,width:window.innerWidth, zIndex:-30,objectFit:"cover"}}
+  style={{
+ position:"absolute",
+  height:window.innerHeight,
+  width:window.innerWidth, 
+  zIndex:-1,
+  objectFit:"cover",
+ 
+}}
   >
     <source src={this.state.srcNow} type="video/mp4"></source>
   </video>
@@ -281,11 +287,13 @@ return (
     paddingTop:80, 
      Width:window.innerWidth,
      minWidth:window.innerWidth,
+     minHeight:window.innerHeight,
     // backgroundImage: `url(  ${ images[0] }  )` ,
    // marginTop:theme.spacing(),
     //minHeight:window.innerHeight,
     width:'auto',
     zIndex:-1,
+    marginTop:-65,
     //height:window.innerhight,
     // zIndex:-1,
     // backgroundImage: `url(${stars})`,
@@ -573,4 +581,3 @@ return (
 //   </div>
 //   )
 // }
-

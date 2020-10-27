@@ -52,7 +52,7 @@ const useStyles = makeStyles({
 export default function Menu() {
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  
+  const [iconColor, setIconColor] = React.useState('#ff9900');
   const [state, setState] = React.useState({
     right: false,
   });
@@ -117,14 +117,19 @@ export default function Menu() {
     <AppBar position="fixed"  style={{backgroundColor: "#fff"}}>
     <Toolbar >
        <React.Fragment key={'right'} >
-          <IconButton edge="start" aria-label="open drawer" onClick={toggleDrawer('right', true)}>    <MenuIcon /> </IconButton>
+          <IconButton 
+          edge="start" 
+          aria-label="open drawer" 
+          onClick={toggleDrawer('right', true)}
+          style={{color:iconColor}}
+          onMouseMove={()=>{setIconColor("#cc0000")}}
+          onMouseOut={()=>{setIconColor('#ff9900')}}
+          >    <MenuIcon fontSize="large"/> </IconButton>
           <Drawer anchor={'right'} open={state['right']} onClose={toggleDrawer('right', false)}>
             {list('right')}
           </Drawer>
         </React.Fragment>
-      <IconButton >
-     
-      </IconButton>
+
 
       {/* <Fab color="secondary" aria-label="add" className={classes.fabButton}>
         <AddIcon />
