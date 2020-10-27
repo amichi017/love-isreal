@@ -4,9 +4,9 @@ import 'react-slideshow-image/dist/styles.css'
 import video_1 from '../video/video_1.mp4';
 import video_2 from '../video/video_2.mp4';
 import video_3 from '../video/video_3.mp4';
-import video_4 from '../video/video_4.mp4';
-import video_5 from '../video/video_5.mp4';
-import video_6 from '../video/video_6.mp4';
+// import video_4 from '../video/video_4.mp4';
+// import video_5 from '../video/video_5.mp4';
+// import video_6 from '../video/video_6.mp4';
 import slide_2 from '../images/slide_2.jpg';
 import slide_3 from '../images/slide_3.jpg';
 import slide_4 from '../images/slide_4.jpg';
@@ -142,9 +142,7 @@ export default class main extends Component {
         video_1,
         video_2,
         video_3,
-        video_4,
-        video_5,
-        video_6,
+      
        
       ]
     }
