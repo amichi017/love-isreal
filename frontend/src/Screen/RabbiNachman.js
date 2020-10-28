@@ -39,7 +39,7 @@ const styles = theme => ({
         fontWeight: theme.typography.fontWeightRegular,
       },
       background:{
-          marginTop:theme.spacing(5),
+          
           width:'auto',
         zIndex:-1,
         backgroundImage: `url(${bg})`,

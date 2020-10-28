@@ -73,7 +73,7 @@ const tableIcons = {
             Width:window.innerWidth,
             //hight:window.innerhight,
             // backgroundImage: `url(  ${ images[0] }  )` ,
-            marginTop:theme.spacing(),
+            marginTop:theme.spacing(-0.01),
             width:'auto',
             zIndex:-1,
             maxHight:window.innerhight,
