@@ -6,7 +6,7 @@ import video_2 from '../video/video_2.mp4';
 import video_3 from '../video/video_3.mp4';
 import video_4 from '../video/video_4.mp4';
 import video_5 from '../video/video_5.mp4';
-import video_6 from '../video/video_6.mp4';
+//import video_6 from '../video/video_6.mp4';
 import slide_2 from '../images/slide_2.jpg';
 import slide_3 from '../images/slide_3.jpg';
 import slide_4 from '../images/slide_4.jpg';
@@ -55,31 +55,41 @@ export default class main extends Component {
     this.myRef = React.createRef();
     this.state={
       index: 0,
+      flag:true,
       width:window.innerWidth,
       height:window.innerHeight,
       srcNow:video_1,
       src: [
         video_1,
         video_2,
-        video_3,
         video_4,
         video_5,
-        video_6,
+        video_3,
+        
       
       
        
       ]
     }
   }
-
+  componentWillMount(){
+    if(this.state.flag===true){ 
+      let rand=(Math.floor(Math.random() * (this.state.src.length-1)));
+      (this.setState({srcNow:this.state.src[rand]}));
+      this.state.index=rand;
+    }
+   else{(this.state.flag=false)}
+  
+ 
+  }
   componentDidMount() {
     let video = this.myRef.current;
-  
+   
     video.addEventListener("ended", e => {
       ///e.preventDefault();
       if (this.state.index === this.state.src.length-1) {
         this.setState({
-          index:(Math.floor(Math.random() * (this.state.src.length-1)))-1,
+          index:-1,
          
         });
       }
@@ -106,7 +116,7 @@ export default class main extends Component {
   
  
   render() {
-   
+   console.log(this.state.srcNow,"insex")
     const images = [
       slide_23,
       slide_22,
@@ -146,7 +156,6 @@ export default class main extends Component {
 
 return (
 <div>
-{console.log(this.state.srcNow,"this.state.srcNow")}
 <video
   ref={this.myRef}
  
@@ -189,7 +198,7 @@ return (
           style={{
             display: 'flex',
             justifyContent: 'center',
-            marginLeft:window.innerWidth*0.03,
+            marginLeft:(window.innerWidth>600)?window.innerWidth*0.04:window.innerWidth*0.08,
             marginTop:(window.innerWidth>600)?window.innerWidth*0.02:-window.innerHeight*0.1,
             
           }}
