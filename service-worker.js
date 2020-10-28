@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/love-isreal/precache-manifest.a1996fac7e0d0b4ea1d34ec344763dc9.js"
+  "/love-isreal/precache-manifest.bfe6d6bb299a8c4c67f70546b015e417.js"
 );
 
 self.addEventListener('message', (event) => {
