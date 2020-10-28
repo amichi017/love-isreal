@@ -4,9 +4,9 @@ import 'react-slideshow-image/dist/styles.css'
 import video_1 from '../video/video_1.mp4';
 import video_2 from '../video/video_2.mp4';
 import video_3 from '../video/video_3.mp4';
-// import video_4 from '../video/video_4.mp4';
-// import video_5 from '../video/video_5.mp4';
-// import video_6 from '../video/video_6.mp4';
+import video_4 from '../video/video_4.mp4';
+import video_5 from '../video/video_5.mp4';
+import video_6 from '../video/video_6.mp4';
 import slide_2 from '../images/slide_2.jpg';
 import slide_3 from '../images/slide_3.jpg';
 import slide_4 from '../images/slide_4.jpg';
@@ -41,86 +41,7 @@ import { withStyles,Typography,CardContent,
   import ReactDOM from "react-dom";
  
 
-  const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-    z-index:-50;
-    background-image: linear-gradient(#0f0c29, #24243e);
-   
-    
-  }
-  to {
-    transform: rotate(180deg);
-    z-index:50;
-  }
-`;
 
-const fade = (primaryColor, secondaryColor) => keyframes`
-0% {
-fill:${primaryColor};
-}
-50% {
- fill:${secondaryColor};
-}
-100%{
-  fill:${primaryColor};
-}
-`;
-
-const pulse = keyframes`
-0% {
-  transform: scale(0);
-  opacity: 1;
-  transform-origin: center;
-}
-100% {
-  transform: scale(4.5);
-  opacity: 0;
-  transform-origin: center;
-}
-`;
-
-const StyledLogo = styled(YourSvg)`
-  animation: ${rotate} infinite 20s linear;
-  height: 25rem;
-  width: 25rem;
-  display: inline-block;
-  margin: auto;
-  .lines {
-    animation: ${props => fade(props.primaryColor, props.secondaryColor)}
-      infinite 8s linear;
-  }
-  .circle {
-    animation: ${pulse} infinite 4s linear;
-    &:hover {
-      animation-play-state: paused;
-      cursor: pointer;
-    }
-  }
-`;
-
-const circlePulse = (colorOne, colorTwo) => keyframes`
-0% {
-  fill:${colorOne};
-  stroke-width:10px
-}
-50% {
-  fill:${colorTwo};
-  stroke-width:2px
-}
-100%{
-  fill:${colorOne};
-  stroke-width:10px
-}
-`;
-const StyledCircle = styled.svg`
-  margin: auto;
-  display: inline-block;
-`;
-const StyledInnerCircle = styled.circle`
-  animation: ${props => circlePulse(props.colorOne, props.colorTwo)} infinite 4s
-    linear;
-`;
 
 
 
@@ -141,6 +62,10 @@ export default class main extends Component {
         video_1,
         video_2,
         video_3,
+        video_4,
+        video_5,
+        video_6,
+      
       
        
       ]
@@ -221,26 +146,19 @@ export default class main extends Component {
 
 return (
 <div>
-
+{console.log(this.state.srcNow,"this.state.srcNow")}
 <video
   ref={this.myRef}
  
   muted
-  style={{
- position:"absolute",
-  height:window.innerHeight,
-  width:window.innerWidth, 
-  zIndex:-1,
-  objectFit:"cover",
- 
-}}
+  style={{position:"absolute",height:window.innerHeight,width:window.innerWidth, zIndex:-1,objectFit:"cover"}}
   >
     <source src={this.state.srcNow} type="video/mp4"></source>
   </video>
 
 
 <div style={{
-    marginTop:58, 
+   // marginTop:58, 
      Width:window.innerWidth,
     // backgroundImage: `url(  ${ images[0] }  )` ,
    // marginTop:theme.spacing(),
@@ -251,7 +169,7 @@ return (
     }}>
 
   
-        <Typography style={{fontSize:40, direction:"rtl",display: 'flex',paddingTop:window.innerHeight*0.05,justifyContent: 'center',color: "#cc0000"}}>
+        <Typography style={{fontSize:40, direction:"rtl",display: 'flex',paddingTop:(window.innerWidth>600)?window.innerHeight*0.1:window.innerHeight*0.19,justifyContent: 'center',color: "#cc0000"}}>
           בית הכנסת 
         </Typography>
  
@@ -282,18 +200,16 @@ return (
              }}></Sedor>
         </div>
  </div>      
-
+ 
   <div style={{
-    paddingTop:80, 
+    paddingTop: window.innerHeight*0.07,
      Width:window.innerWidth,
      minWidth:window.innerWidth,
-     minHeight:window.innerHeight,
     // backgroundImage: `url(  ${ images[0] }  )` ,
    // marginTop:theme.spacing(),
     //minHeight:window.innerHeight,
     width:'auto',
     zIndex:-1,
-    marginTop:-65,
     //height:window.innerhight,
     // zIndex:-1,
     // backgroundImage: `url(${stars})`,
@@ -581,3 +497,4 @@ return (
 //   </div>
 //   )
 // }
+

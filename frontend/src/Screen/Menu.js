@@ -114,17 +114,22 @@ export default function Menu() {
   return (
     <div>
       
-    <AppBar position="fixed"  style={{backgroundColor: "#fff"}}>
-    <Toolbar >
+    
+    
        <React.Fragment key={'right'} >
           <IconButton 
           edge="start" 
           aria-label="open drawer" 
           onClick={toggleDrawer('right', true)}
-          style={{color:iconColor}}
+          style={{color:iconColor,position:"fixed",top:(window.innerWidth>650)?(window.innerHeight*0.016):(-window.innerHeight*0.02),left:(window.innerWidth>650)?(window.innerWidth*0.001):(window.innerWidth*0.035)}}
           onMouseMove={()=>{setIconColor("#cc0000")}}
           onMouseOut={()=>{setIconColor('#ff9900')}}
-          >    <MenuIcon fontSize="large"/> </IconButton>
+          >   
+           <MenuIcon fontSize="large"
+          style={{
+            height:(window.innerWidth>650)?window.innerHeight*0.075:window.innerHeight*0.12,
+            width:(window.innerWidth>650)?window.innerWidth*0.075:window.innerWidth*0.12,}}/>
+             </IconButton>
           <Drawer anchor={'right'} open={state['right']} onClose={toggleDrawer('right', false)}>
             {list('right')}
           </Drawer>
@@ -143,8 +148,7 @@ export default function Menu() {
       <IconButton edge="end" color="inherit">
         <MoreIcon />
       </IconButton> */}
-    </Toolbar>
-  </AppBar>
+ 
   <div className={classes.padding}>
       {
         (selectedIndex===7)? <RabbiNachman/>:<div/> 
