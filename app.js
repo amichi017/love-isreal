@@ -2,23 +2,23 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const morgan=require('morgan')
-const user=require('./routes/user')
+const user=require('./backend/routes/user')
 const helmet = require('helmet') // creates headers that protect from attacks (security)
 //const cors = require('cors')  // allows/disallows cross-site communication
-const routesUser=require('./routes/user')
-const routesMessage=require('./routes/message')
-const routesComplaint=require('./routes/complaint')
+const routesUser=require('./backend/routes/user')
+const routesMessage=require('./backend/routes/message')
+const routesComplaint=require('./backend/routes/complaint')
 const path = require('path');
 
 // if (process.env.NODE_ENV === 'production') {
   // Serve any static files
 
-  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  app.use(express.static(path.join(__dirname, './frontend/build')));
   // Handle React routing, return all requests to React app
  
   app.get('./', function(req, res) {
     console.log("ggggg")
-    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+    res.sendFile(path.join(__dirname, './frontend/build', 'index.html'));
     
   });
 // }
@@ -58,7 +58,7 @@ const path = require('path');
 
 
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@isreal.68yhf.mongodb.net/<dbname>?retryWrites=true&w=majority`,{
+mongoose.connect( process.env.MONGODB_URI || `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@isreal.68yhf.mongodb.net/<dbname>?retryWrites=true&w=majority`,{
     useNewUrlParser: true,
     useUnifiedTopology:true,
 })
@@ -117,7 +117,13 @@ app.use((error,req,res,next)=>{
     // app.get('*', function(req, res) {
     //   res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
     // });
-  
+    if (process.env.NODE_ENV === 'production') {
+        app.use(express.static( 'frontend/build' ));
+    
+        app.get('*', (req, res) => {
+            res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html')); // relative path
+        });
+    }
 
 
 
