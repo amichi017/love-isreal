@@ -31,31 +31,31 @@
 //   ViewColumn
 // } from '@material-ui/icons';
 
-import React, { Component } from 'react'
-import anime from 'animejs';
-import { ReactComponent as YourSvg } from '../svg/torah.svg';
-export default class CounterOfTeam extends Component {
-    animation() {
-        anime({
-            targets: '.myDiv',
-            translateX: 250,
-            rotate: '1turn',
-            backgroundColor: '#F4FF',
-            duration: 5000,
-          });
-        }
+// import React, { Component } from 'react'
+// import anime from 'animejs';
+// import { ReactComponent as YourSvg } from '../svg/torah.svg';
+// export default class CounterOfTeam extends Component {
+//     animation() {
+//         anime({
+//             targets: '.myDiv',
+//             translateX: 250,
+//             rotate: '1turn',
+//             backgroundColor: '#F4FF',
+//             duration: 5000,
+//           });
+//         }
     
-      componentDidMount() {
-        this.animation();
-      }
-    render() {
-        return (
-            <div class="myDiv">
-       <h1 >vsdgvfdsgvsfg</h1>
-        </div>
-        )
-    }
-}
+//       componentDidMount() {
+//         this.animation();
+//       }
+//     render() {
+//         return (
+//             <div class="myDiv">
+//        <h1 >vsdgvfdsgvsfg</h1>
+//         </div>
+//         )
+//     }
+// }
 
 
 
