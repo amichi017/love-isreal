@@ -55,11 +55,20 @@ const useStyles = makeStyles({
     align:'right',
     maxWidth: 320,
     marginTop:30,
-    
+    margingBottom:window.innerWidth<650?window.innerHeight*0.2:window.innerHeight*0.1
     // paddingTop:30,
    
   },
- 
+  paperTow:{
+    maxWidth: 320,
+    marginTop:20,
+    margin:'auto',
+    display:'flex',
+    flexDirection:'column',
+    flexWrap:"wrap",
+    marginBottom:window.innerWidth<650?window.innerHeight*0.15:window.innerHeight*0.06,
+    
+  },
   paper:{
     maxWidth: 320,
     marginTop:20,
@@ -68,7 +77,7 @@ const useStyles = makeStyles({
     flexDirection:'column',
     flexWrap:"wrap",
     marginBottom:30,
-
+    
   },
   paperTyp:{
     maxWidth: 320,
@@ -138,8 +147,6 @@ let dateOfShbat ="";
 fetch("https://www.hebcal.com/shabbat?cfg=json&m=44&latitude=31.6333308&longitude=35.2166658&tzid=Etc/GMT"+str)
   .then(response => response.json())
   .then((res )=> {
-
-
     res.items.map((item,index)=>{
       let date=new Date(item.date);
       let timeBeforSub =new Date(item.date)
@@ -156,6 +163,7 @@ fetch("https://www.hebcal.com/shabbat?cfg=json&m=44&latitude=31.6333308&longitud
         //  let timeAfterSub=new Date(sub);
         rowsShbat[1]=(createData(trnsfrom(timeBeforSub.getHours(),timeBeforSub.getMinutes(),timeBeforSub.getSeconds()), '  תפילת מנחה ערב שבת', )) 
         rowsShbat[2]=(  createData("07:45:00", '   תפילת שחרית של שבת' ) )
+        rowsShbat[3]=(  createData("12:30:00", 'תהילים' ) )
 
        // rowsShbat[2]=(  createData("07:45:00", 'תפילת מחה של שבת' ) )
      
@@ -165,8 +173,28 @@ fetch("https://www.hebcal.com/shabbat?cfg=json&m=44&latitude=31.6333308&longitud
         let timeBeforSub =new Date(item.date)
         let subForMinusDay=(timeBeforSub.getTime()-(10*60*1000));
         let timeAfterMinusDay=new Date(subForMinusDay);
-        rowsShbat.push(  createData(String("מופיע בלוח המודעות"), 'תפילת מנחה של שבת' ), )
-       rowsShbat.push(  createData(trnsfrom(timeAfterMinusDay.getHours(),timeAfterMinusDay.getMinutes(),timeAfterMinusDay.getSeconds()), ' תפילת ערבית של מוצ"ש' ), )
+        
+        let timeBeforRabbyYosef =new Date(timeAfterMinusDay)
+        let subForRabbyYosef =(timeBeforRabbyYosef.getTime()-(120*60*1000));
+        if((timeBeforRabbyYosef.getMinutes()%10)==0 ||(timeBeforRabbyYosef.getMinutes()%10)==5 ){
+          subForRabbyYosef =(timeBeforRabbyYosef.getTime()-(120*60*1000));
+        }
+        else{
+          let x=(timeBeforRabbyYosef.getMinutes()%10);
+          subForRabbyYosef =(timeBeforRabbyYosef.getTime()-((120+x)*60*1000));
+        }
+      
+        let timeAfterRabbyYosef=new Date(subForRabbyYosef);
+        rowsShbat[4]=(  createData(trnsfrom(timeAfterRabbyYosef.getHours(),timeAfterRabbyYosef.getMinutes(),timeAfterRabbyYosef.getSeconds()), 'שיעור בן איש חי' ) )
+
+
+        let timeBeforMnha =new Date(subForRabbyYosef)
+        let subForMnha =(timeBeforMnha.getTime()+(50*60*1000));
+        let timeAfterMnha=new Date(subForMnha);
+        rowsShbat[5]=(  createData(trnsfrom(timeAfterMnha.getHours(),timeAfterMnha.getMinutes(),timeAfterMnha.getSeconds()),  'מנחה, סעודה שלישית   ' ) )
+   
+        rowsShbat[6]=createData(trnsfrom(timeAfterMinusDay.getHours(),timeAfterMinusDay.getMinutes(),timeAfterMinusDay.getSeconds()), ' תפילת ערבית של מוצ"ש' )
+
      }
    
         
@@ -247,7 +275,7 @@ export default function PrayerLoveIsreal() {
 </Typography>
  
     </Paper>
-      <Paper className={classes.paper}>
+      <Paper className={classes.paperTow}>
       <Table className={classes.tableTow} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -258,9 +286,10 @@ export default function PrayerLoveIsreal() {
           {rowsShbat.map((row,index) => (
             <TableRow 
             key={row.name} 
-           
+            style={{}}
+              //marginButtom:(index===(rowsShbat.length-1))? window.innerHeight*0.1:0}}
             >
-
+                  {console.log(rowsShbat.length,index,"pp")}
               <TableCell 
             
               component="th" 

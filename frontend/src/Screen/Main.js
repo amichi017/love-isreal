@@ -116,7 +116,7 @@ export default class main extends Component {
   
  
   render() {
-   console.log(this.state.srcNow,"insex")
+   
     const images = [
       slide_23,
       slide_22,
