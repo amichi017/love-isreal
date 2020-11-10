@@ -19,7 +19,7 @@ import video_3 from '../video/video_3.mp4';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
 import { Widget,addResponseMessage ,toggleWidget } from 'react-chat-widget';
-
+import { ReactComponent as Sedor } from '../svg/sedor.svg';
 import 'react-chat-widget/lib/styles.css';
 
 
@@ -185,7 +185,6 @@ handleExpandClick(){
   this.setState((prevState) => (this.state.err.flag=!prevState.err.flag));
 }
     handleInputChange(e) {
-      console.log(e.target.name)
     this.setState({ [e.target.name] : e.target.value});
     
   }
@@ -746,29 +745,71 @@ axios.post("https://nokdim-backend.herokuapp.com/user/login",data)
                // ref={this.myRef}
                 autoPlay
                 muted
-                style={{position:"absolute",top:0,height:window.innerHeight,width:window.innerWidth, zIndex:-1,objectFit:"cover"}}
+                style={{position:"absolute",top:0,height:window.innerHeight,width:window.innerWidth, zIndex:-5,objectFit:"cover"}}
                 >
                     <source src={video_3} type="video/mp4"></source>
                 </video> }
 
-                <div  style={{position:"absolute",top:0}}>
-
-                <Widget
-                //fullScreenMode
                
-                senderPlaceHolder="הקלד הודעה"
-                badge
-                open
-                //launcher={()=>{return true}}
-                autofocus
-                launcherOpenLabel
-                sendButtonAlt
-                handleNewUserMessage={this.handleNewUserMessage}
-              // profileAvatar={logo}
-                title="הודעות לבית הכנסת"
-                subtitle="מתעדכן על ידי הגבאי"
-               />
-                </div>
+{/* <div style={{
+   // marginTop:58, 
+     Width:window.innerWidth,
+    // backgroundImage: `url(  ${ images[0] }  )` ,
+   // marginTop:theme.spacing(),
+    minHeight:window.innerHeight,
+    maxHeight:window.innerHeight,
+    width:'auto',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    }}>
+
+  
+        <Typography style={{fontSize:40, direction:"rtl",display: 'flex',paddingTop:(window.innerWidth>600)?window.innerHeight*0.1:window.innerHeight*0.19,justifyContent: 'center',color: "#cc0000"}}>
+          בית הכנסת 
+        </Typography>
+ 
+        <Typography 
+        style={{
+          direction:"rtl",
+          display: 'flex',
+          justifyContent: 'center',
+          fontSize:40,
+          color:"#cc0000"
+          }}> 
+                   "אהבת ישראל"
+        </Typography>
+
+
+          <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginLeft:(window.innerWidth>600)?window.innerWidth*0.04:window.innerWidth*0.08,
+            marginTop:(window.innerWidth>600)?window.innerWidth*0.02:-window.innerHeight*0.1,
+            
+          }}
+          >
+            <Sedor style={{
+              width:(window.innerWidth>600)?window.innerWidth*0.5:window.innerWidth*0.8,
+              height:(window.innerWidth>600)?window.innerHeight*0.7:window.innerHeight*0.9,         
+             }}></Sedor>
+        </div>
+ </div>  */}
+
+          <Widget
+          //fullScreenMode
+         
+          senderPlaceHolder="הקלד/י הודעה"
+          showTimeStamp
+          //launcher={()=>{return true}}
+          autofocus
+          launcherOpenLabel
+          sendButtonAlt
+          handleNewUserMessage={this.handleNewUserMessage}
+        // profileAvatar={logo}
+          title="הודעות לבית הכנסת"
+          subtitle="מתעדכן על ידי הגבאי"
+         />
+                
                
 
             

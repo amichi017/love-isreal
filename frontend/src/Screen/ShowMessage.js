@@ -17,6 +17,11 @@ import video_4 from '../video/video_4.mp4';
 import video_5 from '../video/video_5.mp4';
 import slide_11 from '../images/slide_11.jpg';
 import { ReactComponent as YourSvg } from '../svg/torah.svg';
+import { Widget,addResponseMessage ,toggleWidget } from 'react-chat-widget';
+import { ReactComponent as Sedor } from '../svg/sedor.svg';
+import 'react-chat-widget/lib/styles.css';
+
+
   const styles = theme => ({
     heading: {
         fontSize: theme.typography.pxToRem(15),
@@ -28,11 +33,30 @@ export default class ShowMessage extends Component {
     constructor(props) {
         super(props);
         this.state={
+          index:0,
             message:[],
             srcNow: video_4,
           
         }
        
+    }
+    handleNewUserMessage = (newMessage) => {
+
+
+      addResponseMessage('רק הגבאי יכול לשלוח הודעות לכן ההודעה לא תישמר במערכת')
+    // if(this.state.index===0 || this.state.index===1){
+     // addResponseMessage('רק הגבאי יכול לשלוח הודעות לכן ההודעה לא תישמר במערכת')
+  // }
+  //      if(this.state.index===2){
+  //     addResponseMessage('רק הגבאי יכול לשלוח הודעות לכן ההודעה הבאה לא תוצג על המסך  ')
+  //   }
+  //   this.setState(prevState =>{
+  //     return{
+  //          ...prevState,
+  //          index : prevState.index +1
+  //     }
+  //  })
+      // Now send the message throught the backend API
     }
     componentDidMount() {
     
@@ -40,7 +64,11 @@ export default class ShowMessage extends Component {
         .then((response) => response.data)
         .then((res) =>{
             console.log(res,"res")
-            this.setState({message:res.messages})
+            res.messages.forEach(element => {
+              console.log(element.message,"res")
+              addResponseMessage(String(element.message))
+            });
+            // this.setState({message:res.messages})
             this.forceUpdate();
             
         }).catch((err)=>{
@@ -52,7 +80,16 @@ export default class ShowMessage extends Component {
       
         
       }
-    
+      ButtonClicked=(c)=>{
+        console.log("c")
+
+      }
+      componentWillMount(){
+
+        toggleWidget();
+
+
+      }
    
     render() {
         return (
@@ -87,7 +124,7 @@ export default class ShowMessage extends Component {
                             zIndex:-1
                             }} src={slide_17}/> */}
  
-                {
+                {/* {
                      this.state.message.length>0?(
                         this.state.message.slice(0).reverse().map((val,index)=>{
                             return(
@@ -124,9 +161,24 @@ export default class ShowMessage extends Component {
 
                      ):(<div></div>)
                   
-                }
+                } */}
  {
-         
+          <Widget
+          //fullScreenMode
+          //launcher={this.ButtonClicked}
+          senderPlaceHolder="הקלד/י הודעה"
+          showTimeStamp
+          //launcher={()=>{return true}}
+          autofocus
+          launcherOpenLabel
+          sendButtonAlt
+          handleNewUserMessage={this.handleNewUserMessage}
+        // profileAvatar={logo}
+          title="הודעות לבית הכנסת"
+          subtitle="מתעדכן על ידי הגבאי"
+         />
+ }
+ {
          (window.innerWidth>800)?(
        
               <YourSvg style={{position:"absolute",top:20,right:20, height:window.innerHeight*0.55,paddingTop:50,paddingBottom:30,paddingLeft:window.innerWidth*0.01}}></YourSvg>
@@ -140,16 +192,49 @@ export default class ShowMessage extends Component {
 
 
 
-                   {
-          (window.innerWidth<650)? 
-          (
-              <div style={{background: `linear-gradient(#0f0c29, #24243e)`}}>
-                <YourSvg style={{width:window.innerWidth*0.9,paddingTop:window.innerHeight*0.05,paddingBottom:window.innerHeight*0.03,paddingLeft:window.innerWidth*0.053}}></YourSvg>
-              </div>
-            )
-           :<div></div>
+<div style={{
+   // marginTop:58, 
+     Width:window.innerWidth,
+    // backgroundImage: `url(  ${ images[0] }  )` ,
+   // marginTop:theme.spacing(),
+    minHeight:window.innerHeight,
+    maxHeight:window.innerHeight,
+    width:'auto',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    }}>
 
-         }
+  
+        <Typography style={{fontSize:40, direction:"rtl",display: 'flex',paddingTop:(window.innerWidth>600)?window.innerHeight*0.1:window.innerHeight*0.19,justifyContent: 'center',color: "#cc0000"}}>
+          בית הכנסת 
+        </Typography>
+ 
+        <Typography 
+        style={{
+          direction:"rtl",
+          display: 'flex',
+          justifyContent: 'center',
+          fontSize:40,
+          color:"#cc0000"
+          }}> 
+                   "אהבת ישראל"
+        </Typography>
+
+
+          <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginLeft:(window.innerWidth>600)?window.innerWidth*0.04:window.innerWidth*0.08,
+            marginTop:(window.innerWidth>600)?window.innerWidth*0.02:-window.innerHeight*0.1,
+            
+          }}
+          >
+            <Sedor style={{
+              width:(window.innerWidth>600)?window.innerWidth*0.5:window.innerWidth*0.8,
+              height:(window.innerWidth>600)?window.innerHeight*0.7:window.innerHeight*0.9,         
+             }}></Sedor>
+        </div>
+ </div> 
                   
             </div>
         )
