@@ -107,7 +107,8 @@ class Login extends Component {
         startTime:"",
         startChat:'התחלה',
         seveMessage:"",
-        flagEnd:false
+        flagEnd:false,
+        flagNoSend:false,
         // dataOfPrayers:["תפילת שחרית","תפילת מנחה","תפילת ערבית (קיץ)" , "תפילת ערבית חורף"],
         // dataOfShbat:[],
 
@@ -115,19 +116,22 @@ class Login extends Component {
     }; 
 }
 getCustomLauncher=() =>{
-  let endTime = new Date();
-  let timeDiff = endTime - this.state.startTime; //in ms
-  // strip the ms
-  timeDiff /= 1000;
- // console.log(timeDiff,"timeDiff")
-  if(timeDiff>1.4){
-    console.log("object")
-    this.state.showWidht=false;
-    this.forceUpdate();
-  }
+  // let endTime = new Date();
+  // let timeDiff = endTime - this.state.startTime; //in ms
+  // // strip the ms
+
+  // timeDiff /= 1000;
+  // console.log(timeDiff,"timeDiff")
+  // if(timeDiff>1.4){
+  
+  //   this.state.showWidht=false;
+  //   this.forceUpdate();
+  // }
  
 }
 handleNewUserMessage = (newMessage) => {
+  newMessage=newMessage.trim();
+  newMessage=newMessage.replace(/ +(?= )/g,'');
   if(newMessage==="סיימתי"){
     this.state.startChat="סיימתי";
     this.state.flagEnd=true;
@@ -135,6 +139,10 @@ handleNewUserMessage = (newMessage) => {
   if(this.state.flagEnd===true && newMessage==="כן"){
     this.state.startChat="כן"
   }
+  if(newMessage!=="שלח" && this.state.startChat==="שלח"){
+  this.state.startChat="התחלה";
+ 
+}
 
   let data={
     "user":"דוד בוכריס",
@@ -169,7 +177,7 @@ handleNewUserMessage = (newMessage) => {
                 this.state.startChat='התחלה';
             
              
-              console.log(res,"res")
+             
             }).catch((err)=>{
               setTimeout(() => {  addResponseMessage("סליחה לא הצלחתי לשלוח את ההודעה תבדוק בבקשה את החיבור שלך לאינטרנט ותנסה שוב")}, 500);
               setTimeout(() => { addResponseMessage("במידה ותרצה לשלוח הודעה נוספת אנא הזן הודעה נוספת")}, 1500);
@@ -179,7 +187,7 @@ handleNewUserMessage = (newMessage) => {
            
               this.state.startChat='התחלה';
              
-              console.log(err,"err")
+           
             })
            
             
@@ -273,7 +281,7 @@ componentWillMount(){
           // if(res.message === 'Auth successful'){
           //     this.setState({selectedIndex:1})
           // }
-          console.log(res,"res");
+      
 
           }).catch(err => {
 
@@ -290,7 +298,7 @@ handleExpandClick(){
   }
   signIn(){
    
-    console.log(this.state,"e.target.value")
+  
     this.setState({full_name:"",password:""})
     const { full_name,password } = this.state;
     let data={
@@ -311,13 +319,13 @@ axios.post("https://nokdim-backend.herokuapp.com/user/login",data)
     if(res.message === 'Auth successful'){
         this.setState({selectedIndex:2})
     }
-    console.log(res,"res");
+   
 
     }).catch(err => {
       this.state.err.flag=true;
       this.forceUpdate()
       setTimeout(()=>{this.state.err.flag=false;this.forceUpdate()} , 5000);
-       console.log(this.state,"this.state")
+  
 
         console.log(err,"err nokdim-backend.herokuapp.com/user/login")
     })

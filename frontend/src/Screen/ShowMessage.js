@@ -76,6 +76,7 @@ export default class ShowMessage extends Component {
       
 
       if(this.props.counterOfAxios<2){
+        console.log(this.props.counterOfAxios,"this.props.counterOfAxios")
         axios.get("https://nokdim-backend.herokuapp.com/message")
         .then((response) => response.data)
         .then((res) =>{
@@ -105,8 +106,8 @@ export default class ShowMessage extends Component {
     let timeDiff = endTime - this.state.startTime; //in ms
     // strip the ms
     timeDiff /= 1000;
-    
-    if(timeDiff>1.35){
+    console.log(timeDiff,"timeDiff")
+    if(timeDiff>2){
     
       this.state.showWidht=false;
       this.forceUpdate();
@@ -139,7 +140,7 @@ export default class ShowMessage extends Component {
                 >
                     <source src={this.state.srcNow} type="video/mp4"></source>
                 </video>
-               
+          {console.log(this.state.showWidht,"this.state.showWidht")}     
  {
     this.state.showWidht===true?
     (

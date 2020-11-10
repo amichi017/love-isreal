@@ -75,7 +75,7 @@ const icons=[
     right: false,
   });
   const iconsList = (index) => {
-    console.log(index,"pppp")
+   
     switch (index) {
         case 0:
         return (<One style={{
@@ -129,13 +129,15 @@ const icons=[
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
     if(index===2){
-      setCounterOfAxios(1)
+      setCounterOfAxios(counterOfAxios+1)
+      console.log(counterOfAxios,"counterOfAxios")
       return;
     }
-    if(index===2 && counterOfAxios===1){
-      setCounterOfAxios(2)
-    }
-   
+    // if(index===2 && counterOfAxios===1){
+    //   setCounterOfAxios(2)
+    // }
+    console.log(counterOfAxios,"counterOfAxios")
+    console.log(index,"index")
    
   };
   const toggleDrawer = (anchor, open) => (event) => {
