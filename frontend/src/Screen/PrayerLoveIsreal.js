@@ -289,7 +289,7 @@ export default function PrayerLoveIsreal() {
             style={{}}
               //marginButtom:(index===(rowsShbat.length-1))? window.innerHeight*0.1:0}}
             >
-                  {console.log(rowsShbat.length,index,"pp")}
+               
               <TableCell 
             
               component="th" 

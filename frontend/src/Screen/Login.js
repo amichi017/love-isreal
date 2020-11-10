@@ -115,16 +115,16 @@ class Login extends Component {
     }; 
 }
 getCustomLauncher=() =>{
-  // let endTime = new Date();
-  // let timeDiff = endTime - this.state.startTime; //in ms
-  // // strip the ms
-  // timeDiff /= 1000;
-  // console.log(timeDiff,"timeDiff")
-  // if(timeDiff>1.35){
-  //   console.log("object")
-  //   this.state.showWidht=false;
-  //   this.forceUpdate();
-  //}
+  let endTime = new Date();
+  let timeDiff = endTime - this.state.startTime; //in ms
+  // strip the ms
+  timeDiff /= 1000;
+ // console.log(timeDiff,"timeDiff")
+  if(timeDiff>1.4){
+    console.log("object")
+    this.state.showWidht=false;
+    this.forceUpdate();
+  }
  
 }
 handleNewUserMessage = (newMessage) => {
@@ -144,31 +144,39 @@ handleNewUserMessage = (newMessage) => {
   switch (this.state.startChat) {
       case "התחלה":
         this.state.seveMessage=newMessage;
-        addResponseMessage(` 
+        setTimeout(() => { addResponseMessage(` 
         ההודעה שקיבלתי לשתף
-        ${newMessage}`)
+        ${newMessage}`)}, 500);
+        setTimeout(() => { addResponseMessage("האם אתה רוצה לשלוח את ההודעה ? במידה וכן אנא השב שלח במידה ולא אנא הקלד הודעה חדשה")
+      }, 1500);
        // addResponseMessage("האם אתה רוצה לשלוח את ההודעה או שאתה רוצה לערוך אותה במידה ואתה רוצה לשלוח את ההודעה אנא השב שלח")
-       addResponseMessage("האם אתה רוצה לשלוח את ההודעה ? במידה וכן אנא השב שלח במידה ולא אנא הקלד הודעה חדשה")
         this.state.startChat='שלח';
       break;
       case 'שלח':
-        addResponseMessage("אוקיי אני שולח את ההודעה אני יעדכן אותך שאני יסיים")
-        addResponseMessage("...")
+        setTimeout(() => {addResponseMessage("אוקיי אני שולח את ההודעה אני יעדכן אותך שאני יסיים")}, 500);
+        setTimeout(() => {addResponseMessage("...")}, 1500);
+
         axios.post("https://nokdim-backend.herokuapp.com/message/",data)
         .then((response) => response.data)
             .then((res) =>{
-              setTimeout(() => {
-                addResponseMessage("אוקיי סיימתי פרסמתי את ההודעה לכולם")
-                addResponseMessage("במידה ותרצה לשלוח הודעה נוספת אנא הזן הודעה נוספת")
-                addResponseMessage("במידה וסיימת אנא הזן סיימתי")
+              
+                setTimeout(() => {    addResponseMessage("אוקיי סיימתי פרסמתי את ההודעה לכולם")}, 500);
+                setTimeout(() => {addResponseMessage("במידה ותרצה לשלוח הודעה נוספת אנא הזן הודעה נוספת")}, 1500);
+                setTimeout(() => { addResponseMessage("במידה וסיימת אנא הזן סיימתי")}, 2500);
+            
+                
+               
                 this.state.startChat='התחלה';
-              }, 1500);
+            
              
               console.log(res,"res")
             }).catch((err)=>{
-              addResponseMessage("סליחה לא הצלחתי לשלוח את ההודעה תבדוק בבקשה את החיבור שלך לאינטרנט ותנסה שוב")
-              addResponseMessage("במידה ותרצה לשלוח הודעה נוספת אנא הזן הודעה נוספת")
-              addResponseMessage("במידה וסיימת אנא הזן סיימתי")
+              setTimeout(() => {  addResponseMessage("סליחה לא הצלחתי לשלוח את ההודעה תבדוק בבקשה את החיבור שלך לאינטרנט ותנסה שוב")}, 500);
+              setTimeout(() => { addResponseMessage("במידה ותרצה לשלוח הודעה נוספת אנא הזן הודעה נוספת")}, 1500);
+              setTimeout(() => {    addResponseMessage("במידה וסיימת אנא הזן סיימתי")}, 2500);
+             
+              
+           
               this.state.startChat='התחלה';
              
               console.log(err,"err")
@@ -178,15 +186,18 @@ handleNewUserMessage = (newMessage) => {
         break;
       case 'סיימתי':
         this.state.startChat="סיימתי";
-        addResponseMessage("אחלה דודו")
-        addResponseMessage("תודה שהשקעת מזמנך לבית הכנסת אנחנו מודים לך ומעריכים את ההשקעה")
-        addResponseMessage("במידה ותרצה להתחבר שוב  אנא הזן כן")
+        setTimeout(() => {    addResponseMessage("אחלה דודו")}, 500);
+        setTimeout(() => {     addResponseMessage("תודה שהשקעת מזמנך לבית הכנסת אנחנו מודים לך ומעריכים את ההשקעה")}, 1500);
+        setTimeout(() => {    addResponseMessage("במידה ותרצה להתחבר שוב  אנא הזן כן")}, 2500);
+        
+      
+        
           this.state.startChat=true;
           break;
         case "כן":
-              addResponseMessage(" היי דודו")
-              addResponseMessage("אתה מחובר שוב אנא הזן הודעה ")
-              this.state.startChat="התחלה";
+          setTimeout(() => {     addResponseMessage(" היי דודו")}, 500);
+          setTimeout(() => {      addResponseMessage("אתה מחובר שוב אנא הזן הודעה ")}, 1500);
+           this.state.startChat="התחלה";
               break;
          
     default:
@@ -204,10 +215,14 @@ handleNewUserMessage = (newMessage) => {
   // Now send the message throught the backend API
 }
 componentWillMount(){
-      addResponseMessage(" היי דודו")
-      addResponseMessage("  זה הרובוט של בית הכנסת אשמח לסייע לך בניהול בית הכנסת ")
-      addResponseMessage(" כרגע אני יודע רק לשתף הודעות עם המתפללים ")
-      addResponseMessage("אנא הקלד את ההודעה כדי שאוכל לשתף אותה")
+  setTimeout(() => {    addResponseMessage(" היי דודו")}, 500);
+  setTimeout(() => {       addResponseMessage("  זה הרובוט של בית הכנסת אשמח לסייע לך בניהול בית הכנסת ")}, 1500);
+  setTimeout(() => {   addResponseMessage(" כרגע אני יודע רק לשתף הודעות עם המתפללים ")}, 2500);
+  setTimeout(() => {    addResponseMessage("אנא הקלד את ההודעה כדי שאוכל לשתף אותה")}, 3500);
+      
+   
+     
+    
      
       toggleWidget();
       axios.get("https://nokdim-backend.herokuapp.com/prayers")

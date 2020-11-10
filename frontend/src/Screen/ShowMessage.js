@@ -50,7 +50,7 @@ export default class ShowMessage extends Component {
     clikStart=()=>{
       this.state.showWidht=true;
       this.state.flagTimeout=true;
-      console.log(this.state,"this.state")
+    
       
     }
     handleNewUserMessage = (newMessage) => {
@@ -74,14 +74,14 @@ export default class ShowMessage extends Component {
     componentDidMount() {
      
       
-console.log(this.props)
+
       if(this.props.flagOfAxios){
         axios.get("https://nokdim-backend.herokuapp.com/message")
         .then((response) => response.data)
         .then((res) =>{
-            console.log(res,"res")
+           
             res.messages.forEach(element => {
-              console.log(element.message,"res")
+           
               this.state.flagOfAxios=false;
               addResponseMessage(String(element.message))
             });
@@ -105,9 +105,9 @@ console.log(this.props)
     let timeDiff = endTime - this.state.startTime; //in ms
     // strip the ms
     timeDiff /= 1000;
-    console.log(timeDiff,"timeDiff")
+    
     if(timeDiff>1.35){
-      console.log("object")
+    
       this.state.showWidht=false;
       this.forceUpdate();
     }
