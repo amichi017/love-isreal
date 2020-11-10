@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withStyles,FormControlLabel,Typography,TextField,
-    CssBaseline ,Grid, Avatar,Box,  } from '@material-ui/core';
+    Button ,Fab, Avatar,Box,  } from '@material-ui/core';
+    import AddIcon from '@material-ui/icons/Add';
     import bg from '../images/bg.jpg';
 import axios from 'axios'
 import Alert from '@material-ui/lab/Alert';
@@ -32,16 +33,23 @@ export default class ShowMessage extends Component {
 
     constructor(props) {
         super(props);
-        this.ButtonClicked = this.ButtonClicked.bind(this);
+        
         this.state={
-          index:0,
+            index:0,
             message:[],
             srcNow: video_4,
             showWidht:true,
+            flagTimeout:false,
           
         }
        
        
+    }
+    clikStart=()=>{
+      this.state.showWidht=true;
+      this.state.flagTimeout=true;
+      console.log(this.state,"this.state")
+      
     }
     handleNewUserMessage = (newMessage) => {
 
@@ -83,15 +91,21 @@ export default class ShowMessage extends Component {
       
         
       }
+  
+  //     getCustomLauncher=(handleToggle) =>{
 
-      ButtonClicked=()=>{
-        console.log("object")
-       
-          this.state.showWidht=false;
-          console.log(this.state,"hhhhh")
-          this.forceUpdate();
+  //  return  <Button onClick={handleToggle}>כדי לצאת מהמאט לחץ כאן</Button>
+        // if(this.state.flagTimeout && this.state.showWidht){
+        //   this.state.showWidht=false;
+        //   this.forceUpdate();
+         
+        // }
+        // setTimeout(() => {
+        //   this.state.flagTimeout=true;
+        // }, 1000);
       
-      }
+        
+      // }
 
       componentWillMount(){
 
@@ -179,11 +193,7 @@ export default class ShowMessage extends Component {
       <Widget
               //fullScreenMode
               class
-              launcher={()=>{
-                setTimeout(() => {
-                  this.ButtonClicked()
-                }, 2000);
-               }}
+              //launcher={handleToggle => this.getCustomLauncher(handleToggle)}
               senderPlaceHolder="הקלד/י הודעה"
               showTimeStamp
               //launcher={()=>{return true}}
@@ -195,18 +205,19 @@ export default class ShowMessage extends Component {
               title="הודעות לבית הכנסת"
               subtitle="מתעדכן על ידי הגבאי"
             />
-    ):(<div/>)
+    ):(<div/>
+   )
           
  }
  
 
-    
-
+ 
 
 
 <div style={{
    // marginTop:58, 
      Width:window.innerWidth,
+     zIndex:-1,
     // backgroundImage: `url(  ${ images[0] }  )` ,
    // marginTop:theme.spacing(),
     minHeight:window.innerHeight,
@@ -247,6 +258,16 @@ export default class ShowMessage extends Component {
              }}></Sedor>
         </div>
  </div> 
+
+ {/* <Fab  onClick={this.clikStart} color="primary" aria-label="add" style={{pozition:"absulote",bottom:0,right:12}}>
+        <AddIcon />
+      </Fab>
+ <Button 
+      style={{pozition:"absulote",bottom:0,right:12}}
+      variant="contained" 
+      fullWidth
+      color="primary" 
+      onClick={this.clikStart}> לחץ כאן כדי לחזור לצאט</Button> */}
                   
             </div>
         )
