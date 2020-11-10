@@ -40,6 +40,7 @@ export default class ShowMessage extends Component {
             srcNow: video_4,
             showWidht:true,
             flagTimeout:false,
+            startTime:new Date()
           
         }
        
@@ -92,17 +93,30 @@ export default class ShowMessage extends Component {
         
       }
   
-  //     getCustomLauncher=(handleToggle) =>{
+  getCustomLauncher=() =>{
+    let endTime = new Date();
+    let timeDiff = endTime - this.state.startTime; //in ms
+    // strip the ms
+    timeDiff /= 1000;
+    console.log(timeDiff,"timeDiff")
+    if(timeDiff>1.5){
+      console.log("object")
+      this.state.showWidht=false;
+      this.forceUpdate();
+    }
+   
+      //  if(this.state.flagTimeout && this.state.showWidht){
+      //     this.state.showWidht=false;
+      //     this.forceUpdate();
+         
+      //   }
+      //   setTimeout(() => {
+      //     this.state.flagTimeout=true;
+      //   }, 1000);
+  }
 
   //  return  <Button onClick={handleToggle}>כדי לצאת מהמאט לחץ כאן</Button>
-        // if(this.state.flagTimeout && this.state.showWidht){
-        //   this.state.showWidht=false;
-        //   this.forceUpdate();
-         
-        // }
-        // setTimeout(() => {
-        //   this.state.flagTimeout=true;
-        // }, 1000);
+       
       
         
       // }
@@ -193,7 +207,7 @@ export default class ShowMessage extends Component {
       <Widget
               //fullScreenMode
               class
-              //launcher={handleToggle => this.getCustomLauncher(handleToggle)}
+              launcher={ this.getCustomLauncher}
               senderPlaceHolder="הקלד/י הודעה"
               showTimeStamp
               //launcher={()=>{return true}}
