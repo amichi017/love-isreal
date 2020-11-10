@@ -72,7 +72,8 @@ export default class ShowMessage extends Component {
       // Now send the message throught the backend API
     }
     componentDidMount() {
-      addResponseMessage("היי דודו התותח זה הרובוט של בית הכנסת")
+     
+      
 console.log(this.props)
       if(this.props.flagOfAxios){
         axios.get("https://nokdim-backend.herokuapp.com/message")
