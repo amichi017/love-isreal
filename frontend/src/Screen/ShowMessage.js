@@ -40,7 +40,8 @@ export default class ShowMessage extends Component {
             srcNow: video_4,
             showWidht:true,
             flagTimeout:false,
-            startTime:new Date()
+            startTime:new Date(),
+            flagOfAxios:true,
           
         }
        
@@ -71,13 +72,15 @@ export default class ShowMessage extends Component {
       // Now send the message throught the backend API
     }
     componentDidMount() {
-    
+console.log(this.props)
+      if(this.props.flagOfAxios){
         axios.get("https://nokdim-backend.herokuapp.com/message")
         .then((response) => response.data)
         .then((res) =>{
             console.log(res,"res")
             res.messages.forEach(element => {
               console.log(element.message,"res")
+              this.state.flagOfAxios=false;
               addResponseMessage(String(element.message))
             });
             // this.setState({message:res.messages})
@@ -86,6 +89,8 @@ export default class ShowMessage extends Component {
         }).catch((err)=>{
             console.log(err)
         })
+      }
+       
         
      
         
@@ -99,7 +104,7 @@ export default class ShowMessage extends Component {
     // strip the ms
     timeDiff /= 1000;
     console.log(timeDiff,"timeDiff")
-    if(timeDiff>1.2){
+    if(timeDiff>1.25){
       console.log("object")
       this.state.showWidht=false;
       this.forceUpdate();
@@ -123,23 +128,7 @@ export default class ShowMessage extends Component {
    
     render() {
         return (
-            <div style={{
-             
-                  //display:"flex",
-                 // flexDirection:"row"
-            //     Width:window.innerWidth,
-            //     position:"absolute",
-            //     top:0,
-            //     minWidth:window.innerWidth,
-            //    backgroundImage: `url(  ${ slide_11 }  )` ,
-            //       backgroundSize: 'cover',
-            //     backgroundRepeat: 'no-repeat',
-            //   // marginTop:theme.spacing(),
-            //    //minHeight:window.innerHeight,
-            //    //background: `linear-gradient(#0f0c29, #24243e)`,
-            //    width:'auto',
-            //    zIndex:-1,
-            }}>
+            <div>
                 <video
                // ref={this.myRef}
                 autoPlay
@@ -148,51 +137,7 @@ export default class ShowMessage extends Component {
                 >
                     <source src={this.state.srcNow} type="video/mp4"></source>
                 </video>
-                       {/* <img style={{ 
-                           objectFit: "cover",
-                            width: '100%',
-                            height:(window.innerWidth>650)?window.innerHeight*0.75:window.innerHeight*0.6,
-                            zIndex:-1
-                            }} src={slide_17}/> */}
- 
-                {/* {
-                     this.state.message.length>0?(
-                        this.state.message.slice(0).reverse().map((val,index)=>{
-                            return(
-    
-                                <ExpansionPanel 
-                                dir="rtl" 
-                               defaultExpanded={(index<3)?true:false}
-                               style={{
-                                   maxWidth:window.innerWidth<650?window.innerWidth*0.9:850,
-
-                                   marginLeft:window.innerWidth<650?window.innerWidth*0.05:window.innerWidth*0.05,
-                                  marginTop:(index===0)?window.innerHeight*0.18:window.innerHeight*0.01,
-                                  marginBottom:(index===this.state.message.length-1)?window.innerHeight*0.2:0,
-                                  
-                                     }}
-                               >
-                                  <ExpansionPanelSummary
-                                    expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="panel1a-content"
-                                    id="panel1a-header"
-                                    expanded
-                                    style={{backgroundColor:(index%2===0)?'#ffff':'#1212',color:"#ff9933"}}
-                                  >
-                                    <Typography>{val.user}</Typography>
-                                  </ExpansionPanelSummary>
-                                  <ExpansionPanelDetails style={{backgroundColor:(index%2===0)?'#ffff':'#1212'}}>
-                                    <Typography>
-                                      {val.message}
-                                    </Typography>
-                                  </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                            )
-                        })
-
-                     ):(<div></div>)
-                  
-                } */}
+               
  {
     this.state.showWidht===true?
     (
@@ -208,7 +153,7 @@ export default class ShowMessage extends Component {
               sendButtonAlt
               handleNewUserMessage={this.handleNewUserMessage}
             // profileAvatar={logo}
-              title="הודעות לבית הכנסת"
+              title="לוח מודעות "
               subtitle="מתעדכן על ידי הגבאי"
             />
     ):(<div/>
@@ -279,3 +224,48 @@ export default class ShowMessage extends Component {
         )
     }
 }
+        {/* <img style={{ 
+                           objectFit: "cover",
+                            width: '100%',
+                            height:(window.innerWidth>650)?window.innerHeight*0.75:window.innerHeight*0.6,
+                            zIndex:-1
+                            }} src={slide_17}/> */}
+ 
+                {/* {
+                     this.state.message.length>0?(
+                        this.state.message.slice(0).reverse().map((val,index)=>{
+                            return(
+    
+                                <ExpansionPanel 
+                                dir="rtl" 
+                               defaultExpanded={(index<3)?true:false}
+                               style={{
+                                   maxWidth:window.innerWidth<650?window.innerWidth*0.9:850,
+
+                                   marginLeft:window.innerWidth<650?window.innerWidth*0.05:window.innerWidth*0.05,
+                                  marginTop:(index===0)?window.innerHeight*0.18:window.innerHeight*0.01,
+                                  marginBottom:(index===this.state.message.length-1)?window.innerHeight*0.2:0,
+                                  
+                                     }}
+                               >
+                                  <ExpansionPanelSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                    expanded
+                                    style={{backgroundColor:(index%2===0)?'#ffff':'#1212',color:"#ff9933"}}
+                                  >
+                                    <Typography>{val.user}</Typography>
+                                  </ExpansionPanelSummary>
+                                  <ExpansionPanelDetails style={{backgroundColor:(index%2===0)?'#ffff':'#1212'}}>
+                                    <Typography>
+                                      {val.message}
+                                    </Typography>
+                                  </ExpansionPanelDetails>
+                                </ExpansionPanel>
+                            )
+                        })
+
+                     ):(<div></div>)
+                  
+                } */}

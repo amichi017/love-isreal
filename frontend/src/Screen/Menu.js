@@ -60,10 +60,18 @@ export default function Menu() {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [iconColor, setIconColor] = React.useState('#ff9900');
   const [buttomColor, setButtomColor] = React.useState('#ff9900');
+  const [flagOfAxios, setFlagOfAxios] = React.useState(true);
   const [state, setState] = React.useState({
     right: false,
   });
   const handleListItemClick = (event, index) => {
+    if(index===2){
+      console.log(flagOfAxios,"flagOfAxios")
+      setTimeout(() => {
+        setFlagOfAxios(false)
+      }, 1000);
+   
+    }
     setSelectedIndex(index);
     console.log(index)
   };
@@ -266,7 +274,7 @@ export default function Menu() {
         (selectedIndex===2)? 
         (
           
-        <ShowMessage />
+        <ShowMessage flagOfAxios={flagOfAxios}/>
         
         )
         :<div/> 

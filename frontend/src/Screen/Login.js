@@ -117,7 +117,7 @@ getCustomLauncher=() =>{
   // strip the ms
   timeDiff /= 1000;
   console.log(timeDiff,"timeDiff")
-  if(timeDiff>1.2){
+  if(timeDiff>1.35){
     console.log("object")
     this.state.showWidht=false;
     this.forceUpdate();
