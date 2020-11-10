@@ -66,7 +66,7 @@ const useStyles = makeStyles({
     display:'flex',
     flexDirection:'column',
     flexWrap:"wrap",
-    marginBottom:window.innerWidth<650?window.innerHeight*0.15:window.innerHeight*0.06,
+    marginBottom:window.innerWidth<650?window.innerHeight*0.05:window.innerHeight*0.06,
     
   },
   paper:{

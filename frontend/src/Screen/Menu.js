@@ -135,7 +135,7 @@ export default function Menu() {
               //textDecoration: (iconColor==="#cc0000")?'underline':'none',
                color:buttomColor,
                position:"absolute",
-               top:(window.innerWidth>650)?(window.innerHeight*0.02):(window.innerHeight*0.025),
+               top:(window.innerWidth>650)?(window.innerHeight*0.02):(window.innerHeight*0.017),
                right:(window.innerWidth>650)?(window.innerWidth*0.02):(window.innerWidth*0.04)}}            
             onMouseMove={()=>{setButtomColor("#cc0000")}}
             onMouseOut={()=>{setButtomColor('#ff9900')}}

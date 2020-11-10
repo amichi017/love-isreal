@@ -164,25 +164,25 @@ fetch("https://www.hebcal.com/shabbat?cfg=json&m=50&latitude=31.6333308&longitud
       let timeAfterMinusDay=new Date(subForMinusDay);
       if(item.hebrew.slice(0,4) === 'פרשת'){
         dateOfShbat = timeAfterMinusDay.getDate()+"/"+(timeAfterMinusDay.getMonth()+1)+"/"+timeAfterMinusDay.getFullYear();
-        rowsShbat.push( createData( String(item.hebrew)  ,"פרשת השבוע") )
+        rowsShbat[0]=( createData( String(item.hebrew)  ,"פרשת השבוע") )
 
     }
       if(item.hebrew === 'הדלקת נרות'){
          let timeBeforSub =new Date(item.date)
          let sub=(timeBeforSub.getTime()-(5*60*1000));
          let timeAfterSub=new Date(sub);
-        rowsShbat.push( createData( trnsfrom ( timeAfterSub.getHours(),timeAfterSub.getMinutes(),timeAfterSub.getSeconds() ) ,"הדלקת נרות") )
+         rowsShbat[1]=( createData( trnsfrom ( timeAfterSub.getHours(),timeAfterSub.getMinutes(),timeAfterSub.getSeconds() ) ,"הדלקת נרות") )
       }
       if(item.hebrew === 'הבדלה'){
        
-       rowsShbat.push( createData( trnsfrom ( date.getHours(),date.getMinutes(),date.getSeconds() ) ,"צאת שבת") )
+        rowsShbat[2]=( createData( trnsfrom ( date.getHours(),date.getMinutes(),date.getSeconds() ) ,"צאת שבת") )
      }
    
         
         // rowsShbat.push( createData( trnsfrom ( date.getHours(),date.getMinutes(),date.getSeconds() ) , String(item.hebrew) ))
     })
     
-    rowsShbat.push(createData(trnsfrom(new Date(zmanim.BasicZmanim.Tzais72).getHours(),new Date(zmanim.BasicZmanim.Tzais72).getMinutes(),new Date(zmanim.BasicZmanim.Tzais72).getSeconds()), 'צאת השבת לרבנו תם	', ))
+    rowsShbat[3]=(createData(trnsfrom(new Date(zmanim.BasicZmanim.Tzais72).getHours(),new Date(zmanim.BasicZmanim.Tzais72).getMinutes(),new Date(zmanim.BasicZmanim.Tzais72).getSeconds()), 'צאת השבת לרבנו תם	', ))
    
 //  let timeBeforSub =new Date(res.items[2].date)
 //  let sub=(timeBeforSub.getTime()-(5*60*1000));
