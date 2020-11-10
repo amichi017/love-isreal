@@ -105,6 +105,9 @@ class Login extends Component {
         showWidht:true,
         flagTimeout:false,
         startTime:"",
+        startChat:'התחלה',
+        seveMessage:"",
+        flagEnd:false
         // dataOfPrayers:["תפילת שחרית","תפילת מנחה","תפילת ערבית (קיץ)" , "תפילת ערבית חורף"],
         // dataOfShbat:[],
 
@@ -112,34 +115,100 @@ class Login extends Component {
     }; 
 }
 getCustomLauncher=() =>{
-  let endTime = new Date();
-  let timeDiff = endTime - this.state.startTime; //in ms
-  // strip the ms
-  timeDiff /= 1000;
-  console.log(timeDiff,"timeDiff")
-  if(timeDiff>1.35){
-    console.log("object")
-    this.state.showWidht=false;
-    this.forceUpdate();
-  }
+  // let endTime = new Date();
+  // let timeDiff = endTime - this.state.startTime; //in ms
+  // // strip the ms
+  // timeDiff /= 1000;
+  // console.log(timeDiff,"timeDiff")
+  // if(timeDiff>1.35){
+  //   console.log("object")
+  //   this.state.showWidht=false;
+  //   this.forceUpdate();
+  //}
  
 }
 handleNewUserMessage = (newMessage) => {
+  if(newMessage==="סיימתי"){
+    this.state.startChat="סיימתי";
+    this.state.flagEnd=true;
+  }
+  if(this.state.flagEnd===true && newMessage==="כן"){
+    this.state.startChat="כן"
+  }
+
   let data={
     "user":"דוד בוכריס",
-    "message":newMessage
+    "message":this.state.seveMessage
   }
-  axios.post("https://nokdim-backend.herokuapp.com/message/",data)
-  .then((response) => response.data)
-      .then((res) =>{
-        console.log(res,"res")
-      })
+
+  switch (this.state.startChat) {
+      case "התחלה":
+        this.state.seveMessage=newMessage;
+        addResponseMessage(` 
+        ההודעה שקיבלתי לשתף
+        ${newMessage}`)
+       // addResponseMessage("האם אתה רוצה לשלוח את ההודעה או שאתה רוצה לערוך אותה במידה ואתה רוצה לשלוח את ההודעה אנא השב שלח")
+       addResponseMessage("האם אתה רוצה לשלוח את ההודעה ? במידה וכן אנא השב שלח במידה ולא אנא הקלד הודעה חדשה")
+        this.state.startChat='שלח';
+      break;
+      case 'שלח':
+        addResponseMessage("אוקיי אני שולח את ההודעה אני יעדכן אותך שאני יסיים")
+        addResponseMessage("...")
+        axios.post("https://nokdim-backend.herokuapp.com/message/",data)
+        .then((response) => response.data)
+            .then((res) =>{
+              setTimeout(() => {
+                addResponseMessage("אוקיי סיימתי פרסמתי את ההודעה לכולם")
+                addResponseMessage("במידה ותרצה לשלוח הודעה נוספת אנא הזן הודעה נוספת")
+                addResponseMessage("במידה וסיימת אנא הזן סיימתי")
+                this.state.startChat='התחלה';
+              }, 1500);
+             
+              console.log(res,"res")
+            }).catch((err)=>{
+              addResponseMessage("סליחה לא הצלחתי לשלוח את ההודעה תבדוק בבקשה את החיבור שלך לאינטרנט ותנסה שוב")
+              addResponseMessage("במידה ותרצה לשלוח הודעה נוספת אנא הזן הודעה נוספת")
+              addResponseMessage("במידה וסיימת אנא הזן סיימתי")
+              this.state.startChat='התחלה';
+             
+              console.log(err,"err")
+            })
+           
+            
+        break;
+      case 'סיימתי':
+        this.state.startChat="סיימתי";
+        addResponseMessage("אחלה דודו")
+        addResponseMessage("תודה שהשקעת מזמנך לבית הכנסת אנחנו מודים לך ומעריכים את ההשקעה")
+        addResponseMessage("במידה ותרצה להתחבר שוב  אנא הזן כן")
+          this.state.startChat=true;
+          break;
+        case "כן":
+              addResponseMessage(" היי דודו")
+              addResponseMessage("אתה מחובר שוב אנא הזן הודעה ")
+              this.state.startChat="התחלה";
+              break;
+         
+    default:
+      break;
+  }
+
+ 
+  
+   
+ 
+
+  
 
   console.log(`New message incomig! ${newMessage}`);
   // Now send the message throught the backend API
 }
-    componentWillMount(){
-
+componentWillMount(){
+      addResponseMessage(" היי דודו")
+      addResponseMessage("  זה הרובוט של בית הכנסת אשמח לסייע לך בניהול בית הכנסת ")
+      addResponseMessage(" כרגע אני יודע רק לשתף הודעות עם המתפללים ")
+      addResponseMessage("אנא הקלד את ההודעה כדי שאוכל לשתף אותה")
+     
       toggleWidget();
       axios.get("https://nokdim-backend.herokuapp.com/prayers")
       .then((response) => response.data)

@@ -72,6 +72,7 @@ export default class ShowMessage extends Component {
       // Now send the message throught the backend API
     }
     componentDidMount() {
+      addResponseMessage("היי דודו התותח זה הרובוט של בית הכנסת")
 console.log(this.props)
       if(this.props.flagOfAxios){
         axios.get("https://nokdim-backend.herokuapp.com/message")
@@ -104,7 +105,7 @@ console.log(this.props)
     // strip the ms
     timeDiff /= 1000;
     console.log(timeDiff,"timeDiff")
-    if(timeDiff>1.25){
+    if(timeDiff>1.35){
       console.log("object")
       this.state.showWidht=false;
       this.forceUpdate();
