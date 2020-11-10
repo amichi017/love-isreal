@@ -31,6 +31,13 @@ import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Logo_nokdim from '../images/logo_nokdim.png'
+import { ReactComponent as One } from '../svg/1.svg';
+import { ReactComponent as Tow } from '../svg/2.svg';
+import { ReactComponent as Three } from '../svg/3.svg';
+import { ReactComponent as Four } from '../svg/4.svg';
+import { ReactComponent as Five } from '../svg/5.svg';
+import { ReactComponent as Six } from '../svg/6.svg';
+import { ReactComponent as Seven } from '../svg/7.svg';
 const useStyles = makeStyles({
   list: {
     width: (window.innerWidth>900)?window.innerWidth*0.175:180 ,
@@ -56,6 +63,9 @@ const useStyles = makeStyles({
 
 
 export default function Menu() {
+const icons=[
+  One,Tow,Three,Four,Five,Six,Seven
+]
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [iconColor, setIconColor] = React.useState('#ff9900');
@@ -64,16 +74,68 @@ export default function Menu() {
   const [state, setState] = React.useState({
     right: false,
   });
+  const iconsList = (index) => {
+    console.log(index,"pppp")
+    switch (index) {
+        case 0:
+        return (<One style={{
+          width:(window.innerWidth>600)?window.innerWidth*0.09:window.innerWidth*0.09,
+          height:(window.innerWidth>600)?window.innerHeight*0.09:window.innerHeight*0.09,         
+         }}></One>)
+        break;
+        case 1:
+        return (<Tow style={{
+          width:(window.innerWidth>600)?window.innerWidth*0.09:window.innerWidth*0.09,
+          height:(window.innerWidth>600)?window.innerHeight*0.09:window.innerHeight*0.09,         
+         }}></Tow>)
+        break;
+        case 2:
+        return (<Three style={{
+          width:(window.innerWidth>600)?window.innerWidth*0.09:window.innerWidth*0.09,
+          height:(window.innerWidth>600)?window.innerHeight*0.09:window.innerHeight*0.09,         
+         }}></Three>)
+        break;
+        case 3:
+        return (<Four style={{
+          width:(window.innerWidth>600)?window.innerWidth*0.09:window.innerWidth*0.09,
+          height:(window.innerWidth>600)?window.innerHeight*0.09:window.innerHeight*0.09,         
+         }}></Four>)
+        break;
+        case 4:
+        return (<Five style={{
+          width:(window.innerWidth>600)?window.innerWidth*0.09:window.innerWidth*0.09,
+          height:(window.innerWidth>600)?window.innerHeight*0.09:window.innerHeight*0.09,         
+         }}></Five>)
+        break;
+        case 5:
+        return (<Six style={{
+          width:(window.innerWidth>600)?window.innerWidth*0.09:window.innerWidth*0.09,
+          height:(window.innerWidth>600)?window.innerHeight*0.09:window.innerHeight*0.09,         
+         }}></Six>)
+        break;
+        case 6:
+        return (<Seven style={{
+          width:(window.innerWidth>600)?window.innerWidth*0.09:window.innerWidth*0.09,
+          height:(window.innerWidth>600)?window.innerHeight*0.09:window.innerHeight*0.09,         
+         }}></Seven>)
+        break;
+      
+    
+      default:
+        break;
+    }
+
+  }
   const handleListItemClick = (event, index) => {
     if(index===2){
-      console.log(flagOfAxios,"flagOfAxios")
+    
       setTimeout(() => {
         setFlagOfAxios(false)
       }, 1000);
    
     }
     setSelectedIndex(index);
-    console.log(index)
+   
   };
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -100,7 +162,11 @@ export default function Menu() {
           onClick={(event) => handleListItemClick(event, index)}
           >
                <ListItemText primary={text} />
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>
+              {iconsList(index)}
+            
+              
+              </ListItemIcon>
         
           </ListItem>
         ))}
@@ -116,7 +182,7 @@ export default function Menu() {
            >
            
              <ListItemText primary={text} />
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>{ iconsList(index+4)}</ListItemIcon>
            
           </ListItem>
         ))}
