@@ -99,20 +99,12 @@ export default class ShowMessage extends Component {
     // strip the ms
     timeDiff /= 1000;
     console.log(timeDiff,"timeDiff")
-    if(timeDiff>1.5){
+    if(timeDiff>1.2){
       console.log("object")
       this.state.showWidht=false;
       this.forceUpdate();
     }
    
-      //  if(this.state.flagTimeout && this.state.showWidht){
-      //     this.state.showWidht=false;
-      //     this.forceUpdate();
-         
-      //   }
-      //   setTimeout(() => {
-      //     this.state.flagTimeout=true;
-      //   }, 1000);
   }
 
   //  return  <Button onClick={handleToggle}>כדי לצאת מהמאט לחץ כאן</Button>

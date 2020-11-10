@@ -102,11 +102,27 @@ class Login extends Component {
         thirdMeal:" ",//סעודה שלישית 
         nightgPrayerOfShabbatCameOut:" ",//ערבית של מוצאי שבת
         Extensions:[], 
+        showWidht:true,
+        flagTimeout:false,
+        startTime:"",
         // dataOfPrayers:["תפילת שחרית","תפילת מנחה","תפילת ערבית (קיץ)" , "תפילת ערבית חורף"],
         // dataOfShbat:[],
 
 
     }; 
+}
+getCustomLauncher=() =>{
+  let endTime = new Date();
+  let timeDiff = endTime - this.state.startTime; //in ms
+  // strip the ms
+  timeDiff /= 1000;
+  console.log(timeDiff,"timeDiff")
+  if(timeDiff>1.2){
+    console.log("object")
+    this.state.showWidht=false;
+    this.forceUpdate();
+  }
+ 
 }
 handleNewUserMessage = (newMessage) => {
   let data={
@@ -223,7 +239,7 @@ axios.post("https://nokdim-backend.herokuapp.com/user/login",data)
     })
     
     
-
+this.state.startTime=new Date();
     // this.state.Team= axios.get('/get_users',tokenConfig(store.getState))
     // .then((res) => { 
      
@@ -795,20 +811,28 @@ axios.post("https://nokdim-backend.herokuapp.com/user/login",data)
         </div>
  </div> 
 
- <Widget
-          //fullScreenMode
-          //launcher={this.ButtonClicked}
-          senderPlaceHolder="הקלד/י הודעה"
-          showTimeStamp
-          //launcher={()=>{return true}}
-          autofocus
-          launcherOpenLabel
-          sendButtonAlt
-          handleNewUserMessage={this.handleNewUserMessage}
-        // profileAvatar={logo}
-          title="הודעות לבית הכנסת"
-          subtitle="מתעדכן על ידי הגבאי"
-         />
+ {
+    this.state.showWidht===true?
+    (
+      <Widget
+              //fullScreenMode
+              class
+              launcher={ this.getCustomLauncher}
+              senderPlaceHolder="הקלד/י הודעה"
+              showTimeStamp
+              //launcher={()=>{return true}}
+              autofocus
+              launcherOpenLabel
+              sendButtonAlt
+              handleNewUserMessage={this.handleNewUserMessage}
+            // profileAvatar={logo}
+              title="הודעות לבית הכנסת"
+              subtitle="מתעדכן על ידי הגבאי"
+            />
+    ):(<div/>
+   )
+          
+ }
                 
                
 
