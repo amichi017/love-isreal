@@ -20,7 +20,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
 import { Widget,addResponseMessage ,toggleWidget } from 'react-chat-widget';
 import { ReactComponent as Sedor } from '../svg/sedor.svg';
-import 'react-chat-widget/lib/styles.css';
+import '../css/ShowMessage.scss';
 
 
 
@@ -751,7 +751,7 @@ axios.post("https://nokdim-backend.herokuapp.com/user/login",data)
                 </video> }
 
                
-{/* <div style={{
+<div style={{
    // marginTop:58, 
      Width:window.innerWidth,
     // backgroundImage: `url(  ${ images[0] }  )` ,
@@ -793,11 +793,11 @@ axios.post("https://nokdim-backend.herokuapp.com/user/login",data)
               height:(window.innerWidth>600)?window.innerHeight*0.7:window.innerHeight*0.9,         
              }}></Sedor>
         </div>
- </div>  */}
+ </div> 
 
-          <Widget
+ <Widget
           //fullScreenMode
-         
+          //launcher={this.ButtonClicked}
           senderPlaceHolder="הקלד/י הודעה"
           showTimeStamp
           //launcher={()=>{return true}}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withStyles,FormControlLabel,Typography,TextField,
-    CssBaseline ,Button, Avatar,Checkbox,  } from '@material-ui/core';
+    CssBaseline ,Grid, Avatar,Box,  } from '@material-ui/core';
     import bg from '../images/bg.jpg';
 import axios from 'axios'
 import Alert from '@material-ui/lab/Alert';
@@ -20,7 +20,7 @@ import { ReactComponent as YourSvg } from '../svg/torah.svg';
 import { Widget,addResponseMessage ,toggleWidget } from 'react-chat-widget';
 import { ReactComponent as Sedor } from '../svg/sedor.svg';
 import 'react-chat-widget/lib/styles.css';
-
+import '../css/ShowMessage.scss';
 
   const styles = theme => ({
     heading: {
@@ -32,12 +32,15 @@ export default class ShowMessage extends Component {
 
     constructor(props) {
         super(props);
+        this.ButtonClicked = this.ButtonClicked.bind(this);
         this.state={
           index:0,
             message:[],
             srcNow: video_4,
+            showWidht:true,
           
         }
+       
        
     }
     handleNewUserMessage = (newMessage) => {
@@ -80,20 +83,28 @@ export default class ShowMessage extends Component {
       
         
       }
-      ButtonClicked=(c)=>{
-        console.log("c")
 
+      ButtonClicked=()=>{
+        console.log("object")
+       
+          this.state.showWidht=false;
+          console.log(this.state,"hhhhh")
+          this.forceUpdate();
+      
       }
+
       componentWillMount(){
 
         toggleWidget();
 
 
       }
+      
    
     render() {
         return (
             <div style={{
+             
                   //display:"flex",
                  // flexDirection:"row"
             //     Width:window.innerWidth,
@@ -163,30 +174,31 @@ export default class ShowMessage extends Component {
                   
                 } */}
  {
-          <Widget
-          //fullScreenMode
-          //launcher={this.ButtonClicked}
-          senderPlaceHolder="הקלד/י הודעה"
-          showTimeStamp
-          //launcher={()=>{return true}}
-          autofocus
-          launcherOpenLabel
-          sendButtonAlt
-          handleNewUserMessage={this.handleNewUserMessage}
-        // profileAvatar={logo}
-          title="הודעות לבית הכנסת"
-          subtitle="מתעדכן על ידי הגבאי"
-         />
+    this.state.showWidht===true?
+    (
+      <Widget
+              //fullScreenMode
+              class
+              launcher={()=>{
+                setTimeout(() => {
+                  this.ButtonClicked()
+                }, 2000);
+               }}
+              senderPlaceHolder="הקלד/י הודעה"
+              showTimeStamp
+              //launcher={()=>{return true}}
+              autofocus
+              launcherOpenLabel
+              sendButtonAlt
+              handleNewUserMessage={this.handleNewUserMessage}
+            // profileAvatar={logo}
+              title="הודעות לבית הכנסת"
+              subtitle="מתעדכן על ידי הגבאי"
+            />
+    ):(<div/>)
+          
  }
- {
-         (window.innerWidth>800)?(
-       
-              <YourSvg style={{position:"absolute",top:20,right:20, height:window.innerHeight*0.55,paddingTop:50,paddingBottom:30,paddingLeft:window.innerWidth*0.01}}></YourSvg>
-         
-         ) 
-         :<div></div>
-
-      }
+ 
 
     
 

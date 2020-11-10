@@ -1,0 +1,23 @@
+/* .rcw-conversation-container > .rcw-header {
+    background-color: red;
+  } */
+
+  .rcw-conversation-container > .rcw-header {
+    margin-top:10vh;
+  }
+  @media screen and (max-width: 650px) {
+    .rcw-conversation-container > {
+      position: absolute;
+      width: 10vw;
+      height: 4vh;
+      z-index: 0;
+    }
+    .rcw-container{
+      position: absolute;
+      width: 10vw;
+      height: 4vh;
+      z-index: 0;
+    }
+    
+  }
+  
