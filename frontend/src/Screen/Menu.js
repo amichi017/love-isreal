@@ -70,7 +70,7 @@ const icons=[
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [iconColor, setIconColor] = React.useState('#ff9900');
   const [buttomColor, setButtomColor] = React.useState('#ff9900');
-  const [flagOfAxios, setFlagOfAxios] = React.useState(true);
+  const [counterOfAxios, setCounterOfAxios] = React.useState(0);
   const [state, setState] = React.useState({
     right: false,
   });
@@ -127,14 +127,15 @@ const icons=[
 
   }
   const handleListItemClick = (event, index) => {
-    if(index===2){
-    
-      setTimeout(() => {
-        setFlagOfAxios(false)
-      }, 1000);
-   
-    }
     setSelectedIndex(index);
+    if(index===2){
+      setCounterOfAxios(1)
+      return;
+    }
+    if(index===2 && counterOfAxios===1){
+      setCounterOfAxios(2)
+    }
+   
    
   };
   const toggleDrawer = (anchor, open) => (event) => {
@@ -340,7 +341,7 @@ const icons=[
         (selectedIndex===2)? 
         (
           
-        <ShowMessage flagOfAxios={flagOfAxios}/>
+        <ShowMessage counterOfAxios={counterOfAxios}/>
         
         )
         :<div/> 

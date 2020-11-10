@@ -75,7 +75,7 @@ export default class ShowMessage extends Component {
      
       
 
-      if(this.props.flagOfAxios){
+      if(this.props.counterOfAxios<2){
         axios.get("https://nokdim-backend.herokuapp.com/message")
         .then((response) => response.data)
         .then((res) =>{
