@@ -42,6 +42,7 @@ export default class ShowMessage extends Component {
             flagTimeout:false,
             startTime:new Date(),
             flagOfAxios:true,
+            counter:0,
           
         }
        
@@ -102,12 +103,14 @@ export default class ShowMessage extends Component {
       }
   
   getCustomLauncher=() =>{
+    this.state.counter= this.state.counter++;
+
     let endTime = new Date();
     let timeDiff = endTime - this.state.startTime; //in ms
     // strip the ms
     timeDiff /= 1000;
     console.log(timeDiff,"timeDiff")
-    if(timeDiff>2){
+    if(timeDiff>4){
     
       this.state.showWidht=false;
       this.forceUpdate();
@@ -115,17 +118,9 @@ export default class ShowMessage extends Component {
    
   }
 
-  //  return  <Button onClick={handleToggle}>כדי לצאת מהמאט לחץ כאן</Button>
-       
-      
-        
-      // }
-
       componentWillMount(){
 
         toggleWidget();
-
-
       }
       
    
@@ -213,6 +208,70 @@ export default class ShowMessage extends Component {
         </div>
  </div> 
 
+
+                  
+            </div>
+        )
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  {/* <Fab  onClick={this.clikStart} color="primary" aria-label="add" style={{pozition:"absulote",bottom:0,right:12}}>
         <AddIcon />
       </Fab>
@@ -222,11 +281,6 @@ export default class ShowMessage extends Component {
       fullWidth
       color="primary" 
       onClick={this.clikStart}> לחץ כאן כדי לחזור לצאט</Button> */}
-                  
-            </div>
-        )
-    }
-}
         {/* <img style={{ 
                            objectFit: "cover",
                             width: '100%',
