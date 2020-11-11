@@ -21,7 +21,7 @@ import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
 import { Widget,addResponseMessage ,toggleWidget } from 'react-chat-widget';
 import { ReactComponent as Sedor } from '../svg/sedor.svg';
 import '../css/ShowMessage.scss';
-
+import logo from '../svg/5.svg';
 
 
 
@@ -921,6 +921,7 @@ this.state.startTime=new Date();
               autofocus
               launcherOpenLabel
               sendButtonAlt
+              profileAvatar={logo}
               handleNewUserMessage={this.handleNewUserMessage}
             // profileAvatar={logo}
               title="לוח מודעות "

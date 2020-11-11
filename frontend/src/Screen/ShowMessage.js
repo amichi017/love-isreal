@@ -23,7 +23,7 @@ import { ReactComponent as Sedor } from '../svg/sedor.svg';
 import 'react-chat-widget/lib/styles.css';
 import '../css/ShowMessage.scss';
 import { ThemeProvider } from 'styled-components';
-
+import logo from '../svg/5.svg';
   const styles = theme => ({
     heading: {
         fontSize: theme.typography.pxToRem(15),
@@ -152,7 +152,7 @@ export default class ShowMessage extends Component {
               autofocus
               launcherOpenLabel
               sendButtonAlt
-            
+              profileAvatar={logo}
               handleNewUserMessage={this.handleNewUserMessage}
             // profileAvatar={logo}
               title="לוח מודעות "
