@@ -22,6 +22,7 @@ import { Widget,addResponseMessage ,toggleWidget } from 'react-chat-widget';
 import { ReactComponent as Sedor } from '../svg/sedor.svg';
 import 'react-chat-widget/lib/styles.css';
 import '../css/ShowMessage.scss';
+import { ThemeProvider } from 'styled-components';
 
   const styles = theme => ({
     heading: {
@@ -42,7 +43,7 @@ export default class ShowMessage extends Component {
             flagTimeout:false,
             startTime:new Date(),
             flagOfAxios:true,
-            counter:0,
+            counter:-2,
           
         }
        
@@ -74,9 +75,9 @@ export default class ShowMessage extends Component {
     }
     componentDidMount() {
      
-      
-
+     
       if(this.props.counterOfAxios<2){
+        this.state.counter=-4;
         console.log(this.props.counterOfAxios,"this.props.counterOfAxios")
         axios.get("https://nokdim-backend.herokuapp.com/message")
         .then((response) => response.data)
@@ -102,15 +103,17 @@ export default class ShowMessage extends Component {
         
       }
   
-  getCustomLauncher=() =>{
-    this.state.counter= this.state.counter++;
+  getCustomLauncher=(handleToggle) =>{
+   
+    this.state.counter= this.state.counter+1;
+    console.log(this.state.counter,"handleToggle")
 
-    let endTime = new Date();
-    let timeDiff = endTime - this.state.startTime; //in ms
-    // strip the ms
-    timeDiff /= 1000;
-    console.log(timeDiff,"timeDiff")
-    if(timeDiff>4){
+    // let endTime = new Date();
+    // let timeDiff = endTime - this.state.startTime; //in ms
+    // // strip the ms
+    // timeDiff /= 1000;
+    // console.log(timeDiff,"timeDiff")
+    if(this.state.counter===1){
     
       this.state.showWidht=false;
       this.forceUpdate();
@@ -119,7 +122,6 @@ export default class ShowMessage extends Component {
   }
 
       componentWillMount(){
-
         toggleWidget();
       }
       
@@ -142,13 +144,15 @@ export default class ShowMessage extends Component {
       <Widget
               //fullScreenMode
               class
-              launcher={ this.getCustomLauncher}
+              launcher={handleToggle => this.getCustomLauncher(handleToggle)}
               senderPlaceHolder="הקלד/י הודעה"
               showTimeStamp
               //launcher={()=>{return true}}
+              handleSubmit={(()=>{this.state.counter=this.state.counter-3})}
               autofocus
               launcherOpenLabel
               sendButtonAlt
+            
               handleNewUserMessage={this.handleNewUserMessage}
             // profileAvatar={logo}
               title="לוח מודעות "

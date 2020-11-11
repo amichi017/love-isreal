@@ -109,26 +109,30 @@ class Login extends Component {
         seveMessage:"",
         flagEnd:false,
         flagNoSend:false,
+        counter:-5,
         // dataOfPrayers:["תפילת שחרית","תפילת מנחה","תפילת ערבית (קיץ)" , "תפילת ערבית חורף"],
         // dataOfShbat:[],
 
 
     }; 
 }
-getCustomLauncher=() =>{
-  // let endTime = new Date();
-  // let timeDiff = endTime - this.state.startTime; //in ms
-  // // strip the ms
+// getCustomLauncher=(handleToggle) =>{
+   
+//   this.state.counter= this.state.counter+1;
+//   console.log(this.state.counter,"handleToggle")
 
-  // timeDiff /= 1000;
-  // console.log(timeDiff,"timeDiff")
-  // if(timeDiff>1.4){
+//   // let endTime = new Date();
+//   // let timeDiff = endTime - this.state.startTime; //in ms
+//   // // strip the ms
+//   // timeDiff /= 1000;
+//   // console.log(timeDiff,"timeDiff")
+//   if(this.state.counter===1){
   
-  //   this.state.showWidht=false;
-  //   this.forceUpdate();
-  // }
+//     this.state.showWidht=false;
+//     this.forceUpdate();
+//   }
  
-}
+// }
 handleNewUserMessage = (newMessage) => {
   newMessage=newMessage.trim();
   newMessage=newMessage.replace(/ +(?= )/g,'');
@@ -909,16 +913,17 @@ this.state.startTime=new Date();
       <Widget
               //fullScreenMode
               class
-              launcher={ this.getCustomLauncher}
+              //launcher={handleToggle => this.getCustomLauncher(handleToggle)}
               senderPlaceHolder="הקלד/י הודעה"
               showTimeStamp
               //launcher={()=>{return true}}
+              handleSubmit={(()=>{this.state.counter=this.state.counter-3})}
               autofocus
               launcherOpenLabel
               sendButtonAlt
               handleNewUserMessage={this.handleNewUserMessage}
             // profileAvatar={logo}
-              title="הודעות לבית הכנסת"
+              title="לוח מודעות "
               subtitle="מתעדכן על ידי הגבאי"
             />
     ):(<div/>
