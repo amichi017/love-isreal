@@ -227,10 +227,10 @@ handleNewUserMessage = (newMessage) => {
   // Now send the message throught the backend API
 }
 componentWillMount(){
-  setTimeout(() => {    addResponseMessage(" היי דודו")}, 500);
-  setTimeout(() => {       addResponseMessage("  זה הרובוט של בית הכנסת אשמח לסייע לך בניהול בית הכנסת ")}, 1500);
-  setTimeout(() => {   addResponseMessage(" כרגע אני יודע רק לשתף הודעות עם המתפללים ")}, 2500);
-  setTimeout(() => {    addResponseMessage("אנא הקלד את ההודעה כדי שאוכל לשתף אותה")}, 3500);
+  setTimeout(() => {addResponseMessage(" היי דודו")}, 500);
+  setTimeout(() => {addResponseMessage("  זה הרובוט של בית הכנסת אשמח לסייע לך בניהול בית הכנסת ")}, 1500);
+  setTimeout(() => {addResponseMessage(" כרגע אני יודע רק לשתף הודעות עם המתפללים ")}, 2500);
+  setTimeout(() => {addResponseMessage("אנא הקלד את ההודעה כדי שאוכל לשתף אותה")}, 3500);
       
    
      
