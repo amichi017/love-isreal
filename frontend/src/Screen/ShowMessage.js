@@ -125,7 +125,7 @@ export default class ShowMessage extends Component {
  
                 {
                      this.state.message.length>0?(
-                        this.state.message.map((val,index)=>{
+                        this.state.message.slice().reverse().map((val,index)=>{
                             return(
     
                                 <ExpansionPanel 
@@ -148,7 +148,7 @@ export default class ShowMessage extends Component {
                                   >
                                     <Typography>
                                     <Typography>{`כותב ההודעה : ${val.user}`} </Typography>
-                                    <Typography>{`תאריך כתיבת ההודעה: ${val.date.toString().substring(0,4)} / ${val.date.toString().substring(5,7)}  / ${val.date.toString().substring(8,10)} `} </Typography>
+                                    <Typography variant="caption">{`תאריך כתיבת ההודעה: ${val.date.toString().substring(0,4)} / ${val.date.toString().substring(5,7)}  / ${val.date.toString().substring(8,10)} `} </Typography>
                                      
 
                                     </Typography>
