@@ -96,14 +96,14 @@ export default class ShowMessage extends Component {
                   //display:"flex",
                  // flexDirection:"row"
             //     Width:window.innerWidth,
-                position:"absolute",
-                top:0,
+                // position:"absolute",
+                // top:0,
             //     minWidth:window.innerWidth,
             //    backgroundImage: `url(  ${ slide_11 }  )` ,
             //       backgroundSize: 'cover',
             //     backgroundRepeat: 'no-repeat',
               //marginTop:theme.spacing(),
-               minHeight:window.innerHeight,
+              //  minHeight:window.innerHeight,
             //    //background: `linear-gradient(#0f0c29, #24243e)`,
              //  width:'auto',
                zIndex:-1,
@@ -112,7 +112,7 @@ export default class ShowMessage extends Component {
                // ref={this.myRef}
                 autoPlay
                 muted
-                style={{position:"absolute",top:0,height:window.innerHeight,width:window.innerWidth, zIndex:-1,objectFit:"cover"}}
+                style={{position:"absolute",top:0,height:window.innerHeight*0.4,width:window.innerWidth, zIndex:-1,objectFit:"cover"}}
                 >
                     <source src={this.state.srcNow} type="video/mp4"></source>
                 </video>
@@ -135,7 +135,7 @@ export default class ShowMessage extends Component {
                                    maxWidth:window.innerWidth<650?window.innerWidth*0.9:850,
                                    marginLeft:window.innerWidth<650?window.innerWidth*0.05:window.innerWidth*0.05,
                                   marginTop:(index===0)?window.innerHeight*0.18:window.innerHeight*0.01,
-                                  marginBottom:(index===this.state.message.length-1)?window.innerHeight*0.2:0,
+                                  marginBottom:(index===this.state.message.length-1)?window.innerHeight*0.15:0,
                                   
                                      }}
                                >
@@ -191,7 +191,16 @@ export default class ShowMessage extends Component {
 
       }
 
-    
+{
+           (window.innerWidth<650 && this.state.message.length>0)? 
+          (
+              <div style={{background: `linear-gradient(#0f0c29, #24243e)`}}>
+                <YourSvg style={{width:window.innerWidth*0.9,paddingTop:window.innerHeight*0.05,paddingBottom:window.innerHeight*0.03,paddingLeft:window.innerWidth*0.053}}></YourSvg>
+              </div>
+            )
+           :<div></div>
+
+         }
 
 
 
