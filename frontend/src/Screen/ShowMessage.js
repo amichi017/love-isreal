@@ -184,7 +184,7 @@ export default class ShowMessage extends Component {
  {
          (window.innerWidth>800)?(
        
-              <YourSvg style={{position:"absolute",top:20,right:20, height:window.innerHeight*0.55,paddingTop:50,paddingBottom:30,paddingLeft:window.innerWidth*0.01}}></YourSvg>
+              <YourSvg style={{position:"absolute",top:20,right:20, height:window.innerHeight*0.4,paddingTop:50,paddingBottom:30,paddingLeft:window.innerWidth*0.01}}></YourSvg>
          
          ) 
          :<div></div>

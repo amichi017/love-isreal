@@ -158,7 +158,7 @@ const icons=[
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['בית כנסת', 'זמני התפילות',"הודעות למתפללים", 'מפה'].map((text, index) => (
+        {['בית כנסת', 'זמני התפילות',"הודעות למתפללים"].map((text, index) => (
           <ListItem 
           button 
           selected={selectedIndex === index}
