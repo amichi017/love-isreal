@@ -185,10 +185,11 @@ export default class ShowMessage extends Component {
           switch (newMessage) {
             case '1':
               if(this.state.modaut.length===0){
-                 this.sendMessage("0","כרגע לוח המודעות של בית הכנסת ריק")
+                 this.sendMessage("0"," כרגע לוח המודעות של בית הכנסת ריק")
                  this.sendMessage("1",`תוכל לבחור במספרים 2 או 3 כדי לקבל שרות נוסף או לכתוב סיימתי במידה ואין לך צורך בהמשך השיחה   `)
                 }
                else{
+                this.sendMessage("0","אוקיי אני מתחיל להציג לך את המודעות אחת אחרי השניה אני יעדכן אותך שאני מסיים")
                  this.state.modaut.forEach((element,index) => {
                   console.log(index,"element")
                   this.sendMessage(index,String(element.message))
@@ -979,30 +980,6 @@ export default class ShowMessage extends Component {
     }
     componentDidMount() {
       if(this.props.counterOfAxios<2){
-        this.state.counter=-5;
-      }
-      this.sendMessage("0","היי")
-      this.sendMessage("1","אני הרובוט של בית הכנסת אהבת ישראל")
-     
-      this.sendMessage("2",`אני יודע לבצע את הפעולות הבאות `)
-      this.sendMessage("3",`1. הצגת מידע`)
-      this.sendMessage("4",`2. לרשום אותך לתפילות בבית הכנסת`)
-      this.sendMessage("5",`3. להציג לך מי מגיע לתפילות כדי שתוכל לדעת אם מתקיים מניין בבית הכנסת `)
-      this.sendMessage("6",`4. ביטול הגעה לתפילות שכבר נרשמת אליהם `)
-      this.sendMessage("7",`אנא הזן את המספרים 1 או 2 או 3 או 4 כדי לקבל את השירות המתאים `)
-
-      axios.get("https://nokdim-backend.herokuapp.com/presence")
-      .then((response)=>response.data)
-      .then((res)=>{
-        this.state.presence=res.Presence;
-        console.log( this.state," this.state")
-      })
-      .catch((err)=>{
-        console.log(err)
-      })
-  
-     
-      if(this.props.counterOfAxios<2){
       
         //console.log(this.props.counterOfAxios,"this.props.counterOfAxios")
         axios.get("https://nokdim-backend.herokuapp.com/message")
@@ -1018,6 +995,32 @@ export default class ShowMessage extends Component {
             console.log(err)
         })
       }
+      axios.get("https://nokdim-backend.herokuapp.com/presence")
+      .then((response)=>response.data)
+      .then((res)=>{
+        this.state.presence=res.Presence;
+        console.log( this.state," this.state")
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+      if(this.props.counterOfAxios<2){
+        this.state.counter=-5;
+      }
+      this.sendMessage("0","היי")
+      this.sendMessage("1","אני הרובוט של בית הכנסת אהבת ישראל")
+     
+      this.sendMessage("2",`אני יודע לבצע את הפעולות הבאות `)
+      this.sendMessage("3",`1. הצגת מידע`)
+      this.sendMessage("4",`2. לרשום אותך לתפילות בבית הכנסת`)
+      this.sendMessage("5",`3. להציג לך מי מגיע לתפילות כדי שתוכל לדעת אם מתקיים מניין בבית הכנסת `)
+      this.sendMessage("6",`4. ביטול הגעה לתפילות שכבר נרשמת אליהם `)
+      this.sendMessage("7",`אנא הזן את המספרים 1 או 2 או 3 או 4 כדי לקבל את השירות המתאים `)
+
+     
+  
+     
+   
        
         
      

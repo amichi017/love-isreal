@@ -231,11 +231,7 @@ componentWillMount(){
   setTimeout(() => {addResponseMessage("  זה הרובוט של בית הכנסת אשמח לסייע לך בניהול בית הכנסת ")}, 1500);
   setTimeout(() => {addResponseMessage(" כרגע אני יודע רק לשתף הודעות עם המתפללים ")}, 2500);
   setTimeout(() => {addResponseMessage("אנא הקלד את ההודעה כדי שאוכל לשתף אותה")}, 3500);
-      
-   
-     
-    
-     
+  
       toggleWidget();
       axios.get("https://nokdim-backend.herokuapp.com/prayers")
       .then((response) => response.data)
