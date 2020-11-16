@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/love-isreal/static/css/main.0945b8f6.chunk.css",
-    "main.js": "/love-isreal/static/js/main.17e07388.chunk.js",
-    "main.js.map": "/love-isreal/static/js/main.17e07388.chunk.js.map",
+    "main.js": "/love-isreal/static/js/main.c51a0d64.chunk.js",
+    "main.js.map": "/love-isreal/static/js/main.c51a0d64.chunk.js.map",
     "runtime-main.js": "/love-isreal/static/js/runtime-main.2c15a2c0.js",
     "runtime-main.js.map": "/love-isreal/static/js/runtime-main.2c15a2c0.js.map",
     "static/css/2.67d184f3.chunk.css": "/love-isreal/static/css/2.67d184f3.chunk.css",
-    "static/js/2.3c9aa006.chunk.js": "/love-isreal/static/js/2.3c9aa006.chunk.js",
-    "static/js/2.3c9aa006.chunk.js.map": "/love-isreal/static/js/2.3c9aa006.chunk.js.map",
+    "static/js/2.4c147978.chunk.js": "/love-isreal/static/js/2.4c147978.chunk.js",
+    "static/js/2.4c147978.chunk.js.map": "/love-isreal/static/js/2.4c147978.chunk.js.map",
     "static/js/3.9c5928b7.chunk.js": "/love-isreal/static/js/3.9c5928b7.chunk.js",
     "static/js/3.9c5928b7.chunk.js.map": "/love-isreal/static/js/3.9c5928b7.chunk.js.map",
     "static/js/4.cf20f707.chunk.js": "/love-isreal/static/js/4.cf20f707.chunk.js",
@@ -15,11 +15,11 @@
     "static/js/5.499bc84f.chunk.js": "/love-isreal/static/js/5.499bc84f.chunk.js",
     "static/js/5.499bc84f.chunk.js.map": "/love-isreal/static/js/5.499bc84f.chunk.js.map",
     "index.html": "/love-isreal/index.html",
-    "precache-manifest.1c5e6e1c992b31179f1fedc02f7bd887.js": "/love-isreal/precache-manifest.1c5e6e1c992b31179f1fedc02f7bd887.js",
+    "precache-manifest.775c371bb4b940845200d99b1876abd7.js": "/love-isreal/precache-manifest.775c371bb4b940845200d99b1876abd7.js",
     "service-worker.js": "/love-isreal/service-worker.js",
     "static/css/2.67d184f3.chunk.css.map": "/love-isreal/static/css/2.67d184f3.chunk.css.map",
     "static/css/main.0945b8f6.chunk.css.map": "/love-isreal/static/css/main.0945b8f6.chunk.css.map",
-    "static/js/2.3c9aa006.chunk.js.LICENSE.txt": "/love-isreal/static/js/2.3c9aa006.chunk.js.LICENSE.txt",
+    "static/js/2.4c147978.chunk.js.LICENSE.txt": "/love-isreal/static/js/2.4c147978.chunk.js.LICENSE.txt",
     "static/js/3.9c5928b7.chunk.js.LICENSE.txt": "/love-isreal/static/js/3.9c5928b7.chunk.js.LICENSE.txt",
     "static/js/4.cf20f707.chunk.js.LICENSE.txt": "/love-isreal/static/js/4.cf20f707.chunk.js.LICENSE.txt",
     "static/js/5.499bc84f.chunk.js.LICENSE.txt": "/love-isreal/static/js/5.499bc84f.chunk.js.LICENSE.txt",
@@ -68,8 +68,8 @@
   "entrypoints": [
     "static/js/runtime-main.2c15a2c0.js",
     "static/css/2.67d184f3.chunk.css",
-    "static/js/2.3c9aa006.chunk.js",
+    "static/js/2.4c147978.chunk.js",
     "static/css/main.0945b8f6.chunk.css",
-    "static/js/main.17e07388.chunk.js"
+    "static/js/main.c51a0d64.chunk.js"
   ]
 }
