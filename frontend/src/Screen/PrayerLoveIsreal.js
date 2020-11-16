@@ -193,6 +193,33 @@ fetch("https://www.hebcal.com/shabbat?cfg=json&m=44&latitude=31.6333308&longitud
         let timeAfterMnha=new Date(subForMnha);
         rowsShbat[5]=(  createData(trnsfrom(timeAfterMnha.getHours(),timeAfterMnha.getMinutes(),timeAfterMnha.getSeconds()),  'מנחה, סעודה שלישית   ' ) )
    
+        let sub=0;
+       
+        console.log(timeAfterMinusDay,"timeAfterMinusDay")
+        if((timeAfterMinusDay.getMinutes()%10)==0 ||(timeAfterMinusDay.getMinutes()%10)==5 ){
+          
+        }
+        else{
+
+            let x=(timeAfterMinusDay.getMinutes()%10);
+            if(x>5 && x<=7){
+              console.log(x,"x")
+              sub =(timeAfterMinusDay.getTime()-((x-5)*60*1000));
+            }
+            else if(x>7){
+              console.log(x,"x")
+              sub =(timeAfterMinusDay.getTime()+((10-x)*60*1000));
+            }
+            else if(x>0 && x<3){
+              sub =(timeAfterMinusDay.getTime()-((x)*60*1000));
+            }
+            else{
+              console.log(x,"x")
+              sub =(timeAfterMinusDay.getTime()+((5-x)*60*1000));
+          }
+         
+        }
+        timeAfterMinusDay=new Date(sub);
         rowsShbat[6]=createData(trnsfrom(timeAfterMinusDay.getHours(),timeAfterMinusDay.getMinutes(),timeAfterMinusDay.getSeconds()), ' תפילת ערבית של מוצ"ש' )
 
      }

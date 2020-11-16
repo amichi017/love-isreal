@@ -55,7 +55,7 @@ const tableIcons = {
     const styles = theme => ({
         paper: {
             autoFocus:true,
-            hight:window.innerhight,
+            
             paddingTop:theme.spacing(15),
             marginLeft:(window.innerWidth<600)?window.innerWidth*0.02:window.innerWidth*0.35,
             marginRight:(window.innerWidth<600)?window.innerWidth*0.02:window.innerWidth*0.1,
@@ -65,7 +65,7 @@ const tableIcons = {
             display:'flex',
             flexDirection:'column',
             flexWrap:"wrap",
-            paddingBottom:400,
+            paddingBottom:100,
             maxWidth:(window.innerWidth<600)?window.innerWidth:450,
           },
           div:{
@@ -76,7 +76,7 @@ const tableIcons = {
             marginTop:theme.spacing(-0.01),
             width:'auto',
             zIndex:-1,
-            maxHight:window.innerhight,
+            maxHight:window.innerhight*0.6,
             background: `linear-gradient(#0f0c29, #24243e)`
             //   //backgroundPosition: 'center',
             //    backgroundSize:"100% 95%",
