@@ -7,7 +7,7 @@ import  ReactLogo from '../images/map.svg';
 // Geocode.setApiKey("AIzaSyALVjLwOIM1gf7EzdJJVmWLKdLP-yZGTcw");
 // Geocode.enableDebug();
 
-class Map extends React.Component {
+class Weather extends React.Component {
  
 
 
@@ -26,4 +26,4 @@ class Map extends React.Component {
 
 }
 
-export default Map;
+export default Weather;

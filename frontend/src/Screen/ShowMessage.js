@@ -20,15 +20,29 @@ import { ReactComponent as YourSvg } from '../svg/torah.svg';
 import { Widget,addResponseMessage ,toggleWidget } from 'react-chat-widget';
 import { ReactComponent as Sedor } from '../svg/sedor.svg';
 import 'react-chat-widget/lib/styles.css';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 
   const styles = theme => ({
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
       },
+      divBottom:{
+        disply:'flex',
+        justifyContent:"center",
+        alignItems:'center',
+        marginTop:window.innerWidth<650?window.innerHeight*0.5:window.innerHeight*0.5,
+        marginLeft:window.innerWidth<650?window.innerWidth*0.4:window.innerWidth*0.45,
+      },
+      bottom: {
+        disply:'flex',
+        justifyContent:"center",
+        alignItems:'center',
+     
+        color: theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
+      },
   })
-export default class ShowMessage extends Component {
+class ShowMessage extends Component {
 
     constructor(props) {
         super(props);
@@ -59,7 +73,8 @@ export default class ShowMessage extends Component {
       // Now send the message throught the backend API
     }
     componentDidMount() {
-    
+      
+     
         axios.get("https://nokdim-backend.herokuapp.com/message")
         .then((response) => response.data)
         .then((res) =>{
@@ -73,6 +88,8 @@ export default class ShowMessage extends Component {
         }).catch((err)=>{
             console.log(err)
         })
+    
+      
         
      
         
@@ -162,7 +179,24 @@ export default class ShowMessage extends Component {
                                 </ExpansionPanel>
                             )
                         })
-                     ):(<div></div>)
+                     ):(
+                       <div className={this.props.classes.divBottom} >
+                          <CircularProgress 
+                          // variant="determinate"
+                           size={80}
+                           value={100}
+                    
+                           />
+                      {/* <CircularProgress
+                      variant="determinate"
+                      className={this.props.classes.bottom}
+                      size={40}
+                      thickness={4}
+                      {...this.props}
+                      value={100}
+                    /> */}
+                    </div>
+                     )
                       }   
                 
  {/* {
@@ -252,3 +286,5 @@ export default class ShowMessage extends Component {
         )
     }
 }
+
+export default withStyles(styles)(ShowMessage);

@@ -15,7 +15,7 @@ import Main from './Main'
 import CounterOfTeam from './CounterOfTeam'
 import PrayerLoveIsreal from './PrayerLoveIsreal' 
 import Rols from './Rols'
-import Map from './Map' 
+import Weather from './Weather' 
 import Login from './Login' 
 import ShowMessage from './ShowMessage' 
 
@@ -158,7 +158,7 @@ const icons=[
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['בית כנסת', 'זמני התפילות',"הודעות למתפללים"].map((text, index) => (
+        {['בית כנסת', 'זמני התפילות',"הודעות למתפללים",].map((text, index) => (
           <ListItem 
           button 
           selected={selectedIndex === index}
@@ -319,7 +319,7 @@ const icons=[
         (selectedIndex===3)? 
         (
           
-        <Map />
+        <Weather />
         
         )
         :<div/> 
