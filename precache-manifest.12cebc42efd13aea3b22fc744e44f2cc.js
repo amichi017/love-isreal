@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e87529363a8d15dc0a62fcf140e240e1",
+    "revision": "f12b7578de208fd33d26f4c209fdb7db",
     "url": "/love-isreal/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/love-isreal/static/css/2.67d184f3.chunk.css"
   },
   {
-    "revision": "9d68fcb43106728a8e38",
+    "revision": "507060e27048bb67b0fe",
     "url": "/love-isreal/static/css/main.0945b8f6.chunk.css"
   },
   {
@@ -44,8 +44,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/love-isreal/static/js/5.499bc84f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9d68fcb43106728a8e38",
-    "url": "/love-isreal/static/js/main.c51a0d64.chunk.js"
+    "revision": "507060e27048bb67b0fe",
+    "url": "/love-isreal/static/js/main.f25d01bd.chunk.js"
   },
   {
     "revision": "0857504cc337e4cb11a4",
