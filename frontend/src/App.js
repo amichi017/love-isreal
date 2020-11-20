@@ -51,7 +51,7 @@ export default class App extends Component {
 
             if(item.hebrew === 'הדלקת נרות'){
                 let timeBeforSub =new Date(item.date)
-                let sub=(timeBeforSub.getTime()-(120*60*1000));
+                let sub=(timeBeforSub.getTime()-(1200*60*1000));
                 this.state.start=new Date(sub).getTime();
              }
              if(item.hebrew === 'הבדלה'){
@@ -89,8 +89,15 @@ export default class App extends Component {
             ):
             (
                 <div>
-                       <Typography variant="h4" align='center' color="primary" paragraph style={{disply:"flex",justifyContent:'center',alignItems:"center",marginTop:window.innerHeight*0.31,maxWidth:600,marginLeft:(window.innerWidth<650)?0:window.innerWidth*0.25}}>
-                           האתר של בית הכנסת "אהבת ישראל" סגור בשבת האתר יפתח במוצאי שבת בשעה {`${this.state.endDate.getHours()}:${this.state.endDate.getMinutes()}`}
+                       <Typography variant="h4" align='center' color="primary" paragraph 
+                       style={{
+                           disply:"flex",
+                           justifyContent:'center',
+                           alignItems:"center",
+                           marginTop:window.innerHeight*0.31,
+                           maxWidth:(window.innerWidth<650)?window.innerWidth*0.9:600,
+                           marginLeft:(window.innerWidth<650)?window.innerWidth*0.05:window.innerWidth*0.25}}>
+                           האתר של בית הכנסת "אהבת ישראל" סגור בשבת האתר יפתח במוצאי שבת בשעה {`${this.state.endDate.getHours()}:${this.state.endDate.getMinutes()}:${this.state.endDate.getSeconds()}`}
                            </Typography> 
                 </div>
             )
