@@ -18,8 +18,24 @@ export default class App extends Component {
     }
     
     componentWillMount(){
-        let start="",end="";
         let date=new Date();
+        const options ={
+            date: date,
+            //timeZoneId: 'Asia/Jerusalem',
+           // timeZoneId: 'ETC/GMT'+str,
+           locationName: 'IL',
+            latitude: 31.6333308,
+            longitude: 35.244064,
+           // complexZmanim: true,
+           // elevation?: number = 0,
+            
+        
+        }
+        const zmanim = KosherZmanim.getZmanimJson(options);
+        let timeOfOpen =new Date(zmanim.BasicZmanim.Tzais72)
+        let sub=(timeOfOpen.getTime()+(10*60*1000));
+        this.state.endDate=new Date(sub);
+
         let str='';
         if(date.toString().includes('חורף')){
             str+='-2'
@@ -40,7 +56,7 @@ export default class App extends Component {
              }
              if(item.hebrew === 'הבדלה'){
                 this.state.end=new Date(item.date).getTime()
-                this.state.endDate=new Date(item.date);
+               
 
                 let startTime=this.state.start
                 let endTime=this.state.end
@@ -73,8 +89,8 @@ export default class App extends Component {
             ):
             (
                 <div>
-                       <Typography variant="h4" align='center' color="primary" paragraph style={{disply:"flex",justifyContent:'center',alignItems:"center",marginTop:window.innerHeight*0.33}}>
-                           האתר של בית הכנסת "אהבת ישראל" סגור בשבת האתר יפתח בשעה {`${this.state.endDate.getHours()}:${this.state.endDate.getMinutes()}`}
+                       <Typography variant="h4" align='center' color="primary" paragraph style={{disply:"flex",justifyContent:'center',alignItems:"center",marginTop:window.innerHeight*0.31,maxWidth:600,marginLeft:(window.innerWidth<650)?0:window.innerWidth*0.25}}>
+                           האתר של בית הכנסת "אהבת ישראל" סגור בשבת האתר יפתח במוצאי שבת בשעה {`${this.state.endDate.getHours()}:${this.state.endDate.getMinutes()}`}
                            </Typography> 
                 </div>
             )
