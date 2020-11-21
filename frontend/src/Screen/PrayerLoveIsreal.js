@@ -46,21 +46,21 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles({
   table: {
-    maxWidth: 320,
+    maxWidth: (window.innerWidth<650)?320:450,
     marginTop:30,
     paddingTop:30,
    
   },
   tableTow:{
     align:'right',
-    maxWidth: 320,
+    maxWidth: (window.innerWidth<650)?320:450,
     marginTop:30,
     margingBottom:window.innerWidth<650?window.innerHeight*0.2:window.innerHeight*0.1
     // paddingTop:30,
    
   },
   paperTow:{
-    maxWidth: 320,
+    maxWidth: (window.innerWidth<650)?320:450,
     marginTop:20,
     margin:'auto',
     display:'flex',
@@ -70,7 +70,7 @@ const useStyles = makeStyles({
     
   },
   paper:{
-    maxWidth: 320,
+    maxWidth:(window.innerWidth<650)?320:450,
     marginTop:20,
     margin:'auto',
     display:'flex',
@@ -80,7 +80,7 @@ const useStyles = makeStyles({
     
   },
   paperTyp:{
-    maxWidth: 320,
+    maxWidth: (window.innerWidth<650)?320:450,
     height:60,
     margin:'auto',
     marginTop:90,
@@ -94,7 +94,7 @@ const useStyles = makeStyles({
     textSize:40,
   },
   paperTypTow:{
-    maxWidth: 320,
+    maxWidth: (window.innerWidth<650)?320:450,
     height:60,
     margin:'auto',
     marginTop:45,
