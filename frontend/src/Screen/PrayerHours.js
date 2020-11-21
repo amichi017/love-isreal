@@ -171,7 +171,7 @@ fetch("https://www.hebcal.com/shabbat?cfg=json&m=50&latitude=31.6333308&longitud
          let timeBeforSub =new Date(item.date)
          let sub=(timeBeforSub.getTime()-(5*60*1000));
          let timeAfterSub=new Date(sub);
-         rowsShbat[1]=( createData( trnsfrom ( timeAfterSub.getHours(),timeAfterSub.getMinutes(),timeAfterSub.getSeconds() ) ,"הדלקת נרות") )
+         rowsShbat[1]=( createData( trnsfrom ( timeAfterSub.getHours(),timeAfterSub.getMinutes(),timeAfterSub.getSeconds() ) ,"זמן הדלקת נרות") )
       }
       if(item.hebrew === 'הבדלה'){
        

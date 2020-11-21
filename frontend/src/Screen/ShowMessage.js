@@ -183,7 +183,7 @@ class ShowMessage extends Component {
                        <div className={this.props.classes.divBottom} >
                           <CircularProgress 
                           // variant="determinate"
-                           size={80}
+                           size={60}
                            value={100}
                     
                            />

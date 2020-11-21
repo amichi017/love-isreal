@@ -171,7 +171,7 @@ fetch("https://www.hebcal.com/shabbat?cfg=json&m=44&latitude=31.6333308&longitud
       if(item.hebrew === 'הבדלה'){
        
         let timeBeforSub =new Date(item.date)
-        let subForMinusDay=(timeBeforSub.getTime()-(10*60*1000));
+        let subForMinusDay=(timeBeforSub.getTime()-(15*60*1000));
         let timeAfterMinusDay=new Date(subForMinusDay);
         
         let timeBeforRabbyYosef =new Date(timeAfterMinusDay)
@@ -189,37 +189,37 @@ fetch("https://www.hebcal.com/shabbat?cfg=json&m=44&latitude=31.6333308&longitud
 
 
         let timeBeforMnha =new Date(subForRabbyYosef)
-        let subForMnha =(timeBeforMnha.getTime()+(50*60*1000));
+        let subForMnha =(timeBeforMnha.getTime()+(45*60*1000));
         let timeAfterMnha=new Date(subForMnha);
         rowsShbat[5]=(  createData(trnsfrom(timeAfterMnha.getHours(),timeAfterMnha.getMinutes(),timeAfterMnha.getSeconds()),  'מנחה, סעודה שלישית   ' ) )
    
-        let sub=0;
+      //   let sub=0;
        
-        console.log(timeAfterMinusDay,"timeAfterMinusDay")
-        if((timeAfterMinusDay.getMinutes()%10)==0 ||(timeAfterMinusDay.getMinutes()%10)==5 ){
+      //  // console.log(timeAfterMinusDay,"timeAfterMinusDay")
+      //   if((timeAfterMinusDay.getMinutes()%10)==0 ||(timeAfterMinusDay.getMinutes()%10)==5 ){
           
-        }
-        else{
+      //   }
+      //   else{
 
-            let x=(timeAfterMinusDay.getMinutes()%10);
-            if(x>5 && x<=7){
-              console.log(x,"x")
-              sub =(timeAfterMinusDay.getTime()-((x-5)*60*1000));
-            }
-            else if(x>7){
-              console.log(x,"x")
-              sub =(timeAfterMinusDay.getTime()+((10-x)*60*1000));
-            }
-            else if(x>0 && x<3){
-              sub =(timeAfterMinusDay.getTime()-((x)*60*1000));
-            }
-            else{
-              console.log(x,"x")
-              sub =(timeAfterMinusDay.getTime()+((5-x)*60*1000));
-          }
+      //       let x=(timeAfterMinusDay.getMinutes()%10);
+      //       if(x>5 && x<=7){
+      //         console.log(x,"x")
+      //         sub =(timeAfterMinusDay.getTime()-((x-5)*60*1000));
+      //       }
+      //       else if(x>7){
+      //         console.log(x,"x")
+      //         sub =(timeAfterMinusDay.getTime()+((10-x)*60*1000));
+      //       }
+      //       else if(x>0 && x<3){
+      //         sub =(timeAfterMinusDay.getTime()-((x)*60*1000));
+      //       }
+      //       else{
+      //         console.log(x,"x")
+      //         sub =(timeAfterMinusDay.getTime()+((5-x)*60*1000));
+      //     }
          
-        }
-        timeAfterMinusDay=new Date(sub);
+      //   }
+      //   timeAfterMinusDay=new Date(sub);
         rowsShbat[6]=createData(trnsfrom(timeAfterMinusDay.getHours(),timeAfterMinusDay.getMinutes(),timeAfterMinusDay.getSeconds()), ' תפילת ערבית של מוצ"ש' )
 
      }
