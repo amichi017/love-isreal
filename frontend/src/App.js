@@ -51,7 +51,7 @@ export default class App extends Component {
 
             if(item.hebrew === 'הדלקת נרות'){
                 let timeBeforSub =new Date(item.date)
-                let sub=(timeBeforSub.getTime()-(1200*60*1000));
+                let sub=(timeBeforSub.getTime()-(120*60*1000));
                 this.state.start=new Date(sub).getTime();
              }
              if(item.hebrew === 'הבדלה'){
