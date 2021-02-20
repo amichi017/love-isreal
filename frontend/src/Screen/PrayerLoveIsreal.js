@@ -144,6 +144,7 @@ const rows = [
 
 let rowsShbat=[];
 let dateOfShbat ="";
+let counter=0;
 fetch("https://www.hebcal.com/shabbat?cfg=json&m=50&latitude=31.6333308&longitude=35.2166658&tzid=Etc/GMT"+str)
   .then(response => response.json())
   .then((res )=> {
@@ -167,13 +168,15 @@ fetch("https://www.hebcal.com/shabbat?cfg=json&m=50&latitude=31.6333308&longitud
         rowsShbat[1]=( createData( trnsfrom ( timeAfterSub.getHours(),timeAfterSub.getMinutes(),timeAfterSub.getSeconds() ) ,"זמן הדלקת נרות") )
         rowsShbat[2]=(createData(trnsfrom(timeBeforSub.getHours(),timeBeforSub.getMinutes(),timeBeforSub.getSeconds()), '  תפילת מנחה ערב שבת', )) 
         rowsShbat[3]=(  createData("07:45:00", '   תפילת שחרית של שבת' ) )
-        rowsShbat[4]=(  createData("12:30:00", 'תהילים' ) )
+        rowsShbat[4]=(  createData("13:00:00", 'תהילים' ) )
 
        // rowsShbat[2]=(  createData("07:45:00", 'תפילת מחה של שבת' ) )
      
       }
-      if(item.hebrew === 'הבדלה'){
-       
+      //if(item.hebrew === 'הבדלה (50 דקות)'){
+        if(counter === 3){
+        
+        console.log(rowsShbat,"rowsShbat")
         let timeBeforSub =new Date(item.date)
         let subForMinusDay=(timeBeforSub.getTime()-(21*60*1000));
         let timeAfterMinusDay=new Date(subForMinusDay);
@@ -225,10 +228,10 @@ fetch("https://www.hebcal.com/shabbat?cfg=json&m=50&latitude=31.6333308&longitud
       //   }
       //   timeAfterMinusDay=new Date(sub);
         rowsShbat[7]=createData(trnsfrom(timeAfterMinusDay.getHours(),timeAfterMinusDay.getMinutes(),timeAfterMinusDay.getSeconds()), ' תפילת ערבית של מוצ"ש' )
-        rowsShbat[8]=( createData( trnsfrom ( date.getHours(),date.getMinutes(),date.getSeconds() ) ,"צאת השבת") )
+      //  rowsShbat[8]=( createData( trnsfrom ( date.getHours(),date.getMinutes(),date.getSeconds() ) ,"צאת השבת") )
 
      }
-   
+     counter++;
         
         // rowsShbat.push( createData( trnsfrom ( date.getHours(),date.getMinutes(),date.getSeconds() ) , String(item.hebrew) ))
     })
